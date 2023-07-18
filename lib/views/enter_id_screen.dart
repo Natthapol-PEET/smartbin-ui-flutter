@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smartbin_ui_flutter/core/router.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
@@ -20,9 +19,10 @@ class EnterIDScreen extends StatelessWidget {
         child: Column(
       children: [
         const SizedBox(height: 10),
-        Text(
+        const Text(
           'ป้อนรหัสนิสิต/นักศึกษา',
-          style: GoogleFonts.kanit(
+          style: TextStyle(
+            fontFamily: 'kanit',
             fontSize: 48,
             fontWeight: FontWeight.w500,
             color: const Color(0xFF377422),
@@ -35,7 +35,7 @@ class EnterIDScreen extends StatelessWidget {
           children: [
             Column(
               children: [
-                Material(
+                const Material(
                   elevation: 10,
                   child: SizedBox(
                     width: 300,
@@ -43,7 +43,8 @@ class EnterIDScreen extends StatelessWidget {
                     child: Center(
                       child: Text(
                         '6040202424',
-                        style: GoogleFonts.kanit(
+                        style: TextStyle(
+                          fontFamily: 'kanit',
                           fontSize: 36,
                         ),
                       ),
@@ -56,7 +57,8 @@ class EnterIDScreen extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () => Get.back(),
-                      child: Image.asset('assets/images/buttons/back-short.png'),
+                      child:
+                          Image.asset('assets/images/buttons/back-short.png'),
                     ),
                     const SizedBox(width: 20),
                     InkWell(
@@ -101,7 +103,8 @@ class EnterIDScreen extends StatelessWidget {
             child: Center(
               child: Text(
                 text,
-                style: GoogleFonts.kanit(
+                style: const TextStyle(
+                  fontFamily: 'kanit',
                   fontSize: 36,
                   fontWeight: FontWeight.w500,
                 ),

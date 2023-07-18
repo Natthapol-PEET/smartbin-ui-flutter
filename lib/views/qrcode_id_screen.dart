@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smartbin_ui_flutter/core/router.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
@@ -13,12 +12,13 @@ class QRCodeIDScreen extends StatelessWidget {
         child: Column(
       children: [
         const SizedBox(height: 10),
-        Text(
+        const Text(
           'เข้าสู่ระบบโดย...',
-          style: GoogleFonts.kanit(
+          style: TextStyle(
+            fontFamily: 'kanit',
             fontSize: 48,
             fontWeight: FontWeight.w500,
-            color: const Color(0xFF377422),
+            color: Color(0xFF377422),
           ),
         ),
         const SizedBox(height: 30),
@@ -39,18 +39,20 @@ class QRCodeIDScreen extends StatelessWidget {
                       height: 150,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'สแกนคิวอาร์โค้ด',
-                    style: GoogleFonts.kanit(
+                    style: TextStyle(
+                      fontFamily: 'kanit',
                       fontSize: 28,
                       fontWeight: FontWeight.w500,
-                      color: const Color(0xFF377422),
+                      color: Color(0xFF377422),
                     ),
                   ),
-                  Text(
+                  const Text(
                     '*ผู้ใช้งานจำเป็นต้องมีแอปพลิเคชัน KUSE Smart Bin\n(ถังขยะตาวิเศษ) ถึงจะสามารถเข้าใช้งานตัวเลือกนี้ได้',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.kanit(
+                    style: TextStyle(
+                      fontFamily: 'kanit',
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
@@ -72,18 +74,20 @@ class QRCodeIDScreen extends StatelessWidget {
                       height: 150,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'รหัสนิสิต/นักศึกษา',
-                    style: GoogleFonts.kanit(
+                    style: TextStyle(
+                      fontFamily: 'kanit',
                       fontSize: 28,
                       fontWeight: FontWeight.w500,
-                      color: const Color(0xFF377422),
+                      color: Color(0xFF377422),
                     ),
                   ),
-                  Text(
+                  const Text(
                     '*กรณีที่ไม่ใช่นิสิต/นักศึกษา\nสามารถเลือกสแกนคิวอาร์โค้ดหรือบริจาคได้',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.kanit(
+                    style: TextStyle(
+                      fontFamily: 'kanit',
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Colors.redAccent,

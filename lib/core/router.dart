@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:smartbin_ui_flutter/bindings/home_screen.dart';
-import 'package:smartbin_ui_flutter/bindings/video_binding.dart';
+import 'package:smartbin_ui_flutter/bindings/process_binding.dart';
 import 'package:smartbin_ui_flutter/views/home_screen.dart';
 import 'package:smartbin_ui_flutter/views/how_to_screen.dart';
 import 'package:smartbin_ui_flutter/views/process_screen.dart';
@@ -9,7 +9,6 @@ import 'package:smartbin_ui_flutter/views/saving_donate_screen.dart';
 import 'package:smartbin_ui_flutter/views/enter_id_screen.dart';
 import 'package:smartbin_ui_flutter/views/scan_qrcode_screen.dart';
 import 'package:smartbin_ui_flutter/views/thanks_screen.dart';
-import 'package:smartbin_ui_flutter/views/video_screen.dart';
 
 class RoutePath {
   static String home = '/home_screen';
@@ -27,41 +26,37 @@ class AppRout {
   static List<GetPage<dynamic>> router = [
     GetPage(
       name: RoutePath.home,
-      page: () => HomeScreen(),
+      page: () => const HomeScreen(),
       binding: HomeBinding(),
     ),
     GetPage(
-      name: RoutePath.video,
-      page: () => VideoScreen(),
-      binding: VideoBinding(),
-    ),
-    GetPage(
       name: RoutePath.howto,
-      page: () => HowToScreen(),
+      page: () => const HowToScreen(),
     ),
     GetPage(
       name: RoutePath.savingDonate,
-      page: () => SavingDonateScreen(),
+      page: () => const SavingDonateScreen(),
     ),
     GetPage(
       name: RoutePath.qrcodeId,
-      page: () => QRCodeIDScreen(),
+      page: () => const QRCodeIDScreen(),
     ),
     GetPage(
       name: RoutePath.scanQRCode,
-      page: () => ScanQRCodeScreen(),
+      page: () => const ScanQRCodeScreen(),
     ),
     GetPage(
       name: RoutePath.enterId,
-      page: () => EnterIDScreen(),
+      page: () => const EnterIDScreen(),
     ),
     GetPage(
       name: RoutePath.process,
-      page: () => ProcessScreen(),
+      page: () => const ProcessScreen(),
+      binding: ProcessBinding(),
     ),
     GetPage(
       name: RoutePath.thanks,
-      page: () => ThanksScreen(),
+      page: () => const ThanksScreen(),
     ),
   ];
 }

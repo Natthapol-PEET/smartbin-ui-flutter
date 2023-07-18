@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smartbin_ui_flutter/controllers/home_controller.dart';
 import 'package:smartbin_ui_flutter/core/router.dart';
-import 'package:smartbin_ui_flutter/core/sound.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 import 'package:smartbin_ui_flutter/widgets/wave_progress.dart';
 
@@ -21,12 +19,13 @@ class HomeScreen extends GetView<HomeController> {
           //   'assets/images/kuse-smart-bin.png',
           //   height: 50,
           // ),
-          Text(
+          const Text(
             'KUSE SMART BIN',
-            style: GoogleFonts.kanit(
+            style: TextStyle(
+              fontFamily: 'kanit',
               fontSize: 72,
               fontWeight: FontWeight.w500,
-              color: const Color(0xFF377422),
+              color: Color(0xFF377422),
             ),
           ),
           const Row(
@@ -56,14 +55,12 @@ class HomeScreen extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                // onTap: () => Get.toNamed(RoutePath.savingDonate),
-                onTap: () => Get.toNamed(RoutePath.video),
+                onTap: () => Get.toNamed(RoutePath.savingDonate),
                 child: Image.asset('assets/images/buttons/exchange.png'),
               ),
               const SizedBox(width: 50),
               InkWell(
-                // onTap: () => Get.toNamed(RoutePath.howto),
-                onTap: () => controller.playSound.on(SourceMP3.gun),
+                onTap: () => Get.toNamed(RoutePath.howto),
                 child: Image.asset('assets/images/buttons/howto.png'),
               ),
             ],
@@ -102,7 +99,8 @@ class TrashTypeCircle extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             type,
-            style: GoogleFonts.kanit(
+            style: const TextStyle(
+              fontFamily: 'kanit',
               fontSize: 26,
               fontWeight: FontWeight.w500,
               color: Colors.black,
@@ -110,7 +108,8 @@ class TrashTypeCircle extends StatelessWidget {
           ),
           Text(
             progress == 100 ? 'เต็มแล้ว' : '$progress %',
-            style: GoogleFonts.kanit(
+            style: const TextStyle(
+              fontFamily: 'kanit',
               fontSize: 28,
               fontWeight: FontWeight.w400,
               color: Colors.black,

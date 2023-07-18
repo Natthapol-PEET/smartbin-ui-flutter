@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:smartbin_ui_flutter/core/router.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
@@ -13,12 +12,13 @@ class SavingDonateScreen extends StatelessWidget {
         child: Column(
       children: [
         const SizedBox(height: 10),
-        Text(
+        const Text(
           'กรุณาเลือกรายการที่ต้องการ',
-          style: GoogleFonts.kanit(
+          style: TextStyle(
+            fontFamily: 'kanit',
             fontSize: 48,
             fontWeight: FontWeight.w500,
-            color: const Color(0xFF377422),
+            color: Color(0xFF377422),
           ),
         ),
         const SizedBox(height: 30),
@@ -39,12 +39,13 @@ class SavingDonateScreen extends StatelessWidget {
                       height: 150,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'สะสมแต้ม',
-                    style: GoogleFonts.kanit(
+                    style: TextStyle(
+                      fontFamily: 'kanit',
                       fontSize: 28,
                       fontWeight: FontWeight.w500,
-                      color: const Color(0xFF377422),
+                      color: Color(0xFF377422),
                     ),
                   ),
                 ],
@@ -63,18 +64,20 @@ class SavingDonateScreen extends StatelessWidget {
                       height: 150,
                     ),
                   ),
-                  Text(
+                  const Text(
                     'บริจาค',
-                    style: GoogleFonts.kanit(
+                    style: TextStyle(
+                      fontFamily: 'kanit',
                       fontSize: 28,
                       fontWeight: FontWeight.w500,
-                      color: const Color(0xFF377422),
+                      color: Color(0xFF377422),
                     ),
                   ),
-                  Text(
+                  const Text(
                     '*กรณีที่เลือกบริจาค\nจะไม่ได้รับคะแนนจากการทิ้งขยะครั้งนี้',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.kanit(
+                    style: TextStyle(
+                      fontFamily: 'kanit',
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Colors.redAccent,
