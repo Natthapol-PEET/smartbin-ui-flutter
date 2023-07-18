@@ -1,6 +1,8 @@
 
 
 <!-- windows -->
+flutter pub get
+
 flutter build bundle
 
 
