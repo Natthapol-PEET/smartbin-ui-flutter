@@ -333,7 +333,7 @@
     },
     {
       "name": "video_player_avfoundation",
-      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/video_player_avfoundation-2.4.7",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/video_player_avfoundation-2.4.8",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -374,7 +374,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-07-17T17:00:58.669799Z",
+  "generated": "2023-07-18T03:41:48.945971Z",
   "generator": "pub",
   "generatorVersion": "3.1.0-285.0.dev"
 }

@@ -1,2 +1,4 @@
-2023/07/18-00:01:14.259 6a07 Creating DB /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.RFJPVt/flutter_tools_chrome_device.ERySZK/Default/Site Characteristics Database since it was missing.
-2023/07/18-00:01:14.405 6a07 Reusing MANIFEST /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.RFJPVt/flutter_tools_chrome_device.ERySZK/Default/Site Characteristics Database/MANIFEST-000001
+2023/07/18-10:48:46.622 b503 Reusing MANIFEST /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.SpueYB/flutter_tools_chrome_device.Bqe6K2/Default/Site Characteristics Database/MANIFEST-000001
+2023/07/18-10:48:46.623 b503 Recovering log #3
+2023/07/18-10:48:46.623 b503 (ignoring error) /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.SpueYB/flutter_tools_chrome_device.Bqe6K2/Default/Site Characteristics Database/000003.log: dropping 757 bytes; Corruption: checksum mismatch
+2023/07/18-10:48:46.623 b503 Reusing old log /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.SpueYB/flutter_tools_chrome_device.Bqe6K2/Default/Site Characteristics Database/000003.log 

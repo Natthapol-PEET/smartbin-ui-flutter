@@ -11,7 +11,7 @@ class VideoScreen extends GetView<VideoController> {
     return Scaffold(
       appBar: AppBar(),
       body: GetBuilder<VideoController>(
-        builder: (controller) {
+        builder: (_) {
           return IndexedStack(
             index:
                 controller.videoController?.value.isInitialized == true ? 0 : 1,
@@ -20,10 +20,16 @@ class VideoScreen extends GetView<VideoController> {
                 aspectRatio: controller.videoController?.value.aspectRatio ?? 0,
                 child: VideoPlayer(controller.videoController!),
               ),
-              Container(),
+              const SizedBox.shrink(),
             ],
           );
         },
+      ),
+      floatingActionButton: InkWell(
+        onTap: () {
+          controller.videoController?.play();
+        },
+        child: Text('click'),
       ),
     );
   }
