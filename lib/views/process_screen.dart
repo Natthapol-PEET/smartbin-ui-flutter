@@ -20,26 +20,18 @@ class ProcessScreen extends GetView<ProcessController> {
                 Image.asset('assets/images/icons/KUSE-logo.png', height: 60),
                 Row(
                   children: [
-                    Image.asset('assets/images/icons/calendar.png',
-                        width: 50, height: 50),
+                    Image.asset('assets/images/icons/calendar.png', width: 50, height: 50),
                     const SizedBox(width: 10),
                     Obx(() => Text(
                           controller.displayDate.value,
-                          style: const TextStyle(
-                              fontFamily: 'kanit',
-                              fontSize: 32,
-                              fontWeight: FontWeight.w500),
+                          style: const TextStyle(fontFamily: 'kanit', fontSize: 32, fontWeight: FontWeight.w500),
                         )),
                     const SizedBox(width: 20),
-                    Image.asset('assets/images/icons/clock.png',
-                        width: 50, height: 50),
+                    Image.asset('assets/images/icons/clock.png', width: 50, height: 50),
                     const SizedBox(width: 10),
                     Obx(() => Text(
                           controller.displayTime.value,
-                          style: const TextStyle(
-                              fontFamily: 'kanit',
-                              fontSize: 32,
-                              fontWeight: FontWeight.w500),
+                          style: const TextStyle(fontFamily: 'kanit', fontSize: 32, fontWeight: FontWeight.w500),
                         )),
                   ],
                 ),
@@ -56,39 +48,31 @@ class ProcessScreen extends GetView<ProcessController> {
                     width: 800 / 2.2,
                     height: 300,
                     padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(8)),
+                    decoration:
+                        BoxDecoration(color: Colors.white.withOpacity(0.5), borderRadius: BorderRadius.circular(8)),
                     child: Column(
                       children: [
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset('assets/images/icons/user.png',
-                                width: 80),
+                            Image.asset('assets/images/icons/user.png', width: 80),
                             const SizedBox(width: 10),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text('สวัสดี คุณ',
-                                    style: TextStyle(
-                                        fontFamily: 'kanit',
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w500)),
+                                    style: TextStyle(fontFamily: 'kanit', fontSize: 22, fontWeight: FontWeight.w500)),
                                 const SizedBox(height: 5),
                                 Container(
                                   width: 180,
                                   height: 40,
                                   decoration: BoxDecoration(
-                                      color: Colors.amber.shade300,
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: const Center(
+                                      color: Colors.amber.shade300, borderRadius: BorderRadius.circular(10)),
+                                  child: Center(
                                     child: Text(
-                                      '6040202424',
-                                      style: TextStyle(
-                                          fontFamily: 'kanit',
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w500),
+                                      controller.studentId,
+                                      style: const TextStyle(
+                                          fontFamily: 'kanit', fontSize: 22, fontWeight: FontWeight.w500),
                                     ),
                                   ),
                                 ),
@@ -104,12 +88,9 @@ class ProcessScreen extends GetView<ProcessController> {
                                   width: 800 / 2.2,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      Image.asset(
-                                          'assets/images/icons/relax.png',
-                                          width: 100),
+                                      Image.asset('assets/images/icons/relax.png', width: 100),
                                       const SizedBox(height: 10),
                                       const Text(
                                         'ถังขยะพร้อมทำงาน',
@@ -126,11 +107,9 @@ class ProcessScreen extends GetView<ProcessController> {
                                   width: 800 / 2.2,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      const SpinKitPouringHourGlassRefined(
-                                          color: Colors.orange, size: 80),
+                                      const SpinKitPouringHourGlassRefined(color: Colors.orange, size: 80),
                                       const SizedBox(height: 10),
                                       Obx(() => Text(
                                             'กำลังประมวลผล ${'. ' * controller.point.value}',
@@ -152,16 +131,13 @@ class ProcessScreen extends GetView<ProcessController> {
                   Row(
                     children: [
                       InkWell(
-                        onTap: () {},
-                        child: Image.asset('assets/images/buttons/exchange.png',
-                            width: 120),
+                        onTap: controller.exchange,
+                        child: Image.asset('assets/images/buttons/exchange.png', width: 120),
                       ),
                       const SizedBox(width: 20),
                       InkWell(
                         onTap: () {},
-                        child: Image.asset(
-                            'assets/images/buttons/look-score.png',
-                            width: 130),
+                        child: Image.asset('assets/images/buttons/look-score.png', width: 130),
                       ),
                     ],
                   ),
@@ -170,8 +146,7 @@ class ProcessScreen extends GetView<ProcessController> {
               Container(
                 width: 800 / 2.5 + 1,
                 height: 360,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                 decoration: BoxDecoration(
                   color: Colors.green.shade300.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(8),
@@ -264,7 +239,7 @@ class ProcessScreen extends GetView<ProcessController> {
                   Obx(() => AnimatedContainer(
                         width: percen.value,
                         height: 40,
-                        duration: const Duration(seconds: 1),
+                        duration: const Duration(milliseconds: 600),
                         decoration: BoxDecoration(
                           color: color,
                           borderRadius: BorderRadius.circular(8),

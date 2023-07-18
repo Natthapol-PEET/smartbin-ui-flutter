@@ -1,43 +1,37 @@
 #!/usr/bin/env bash
 
 set -e
+TASK=$1
+ARGS=${@:2}
+
+help__fixLint="fix lint dart format"
+task_fixLint() {
+  dart format lib -l 120
+}
 
 help__cloneEngine="step-1 - flutter-engine-binaries-for-arm"
 task_cloneEngine(){
     git clone https://github.com/ardera/flutter-engine-binaries-for-arm.git
 }
 
+help__codeAnalytics="run code analytics"
+task_codeAnalytics() {
+   flutter analyze lib --write=analyzer-output.txt
+}
+
 help__build="step-2 - flutter build bundle"
 task_build(){
-    fvm flutter build bundle
+    echo run bash win.sh on command promp
 }
 
 help__windowsSnapshot="step-3 - build snapshot"
 task_windowsSnapshot(){
-    flutter pub get
-
-    C:\Users\natth\fvm\default\bin\cache\dart-sdk\bin\dart.exe ^
-      C:\Users\natth\fvm\default\bin\cache\dart-sdk\bin\snapshots\frontend_server.dart.snapshot ^
-      --sdk-root C:\Users\natth\fvm\default\bin\cache\artifacts\engine\common\flutter_patched_sdk_product ^
-      --target=flutter ^
-      --aot ^
-      --tfa ^
-      -Ddart.vm.product=true ^
-      --packages .dart_tool\package_config.json ^
-      --output-dill build\kernel_snapshot.dill ^
-      --verbose ^
-      --depfile build\kernel_snapshot.d ^
-      package:app_3_10_5/main.dart
+    echo run bash win.sh on command promp
 }
 
 help__linuxAppSo="step-4 - build app.so"
 task_linuxAppSo(){
-  /mnt/d/ku-csc/smartbin-gui-new/flutter-engine-binaries-for-arm/arm64/gen_snapshot_linux_x64_release \
-  --deterministic \
-  --snapshot_kind=app-aot-elf \
-  --elf=build/flutter_assets/app.so \
-  --strip \
-  build/kernel_snapshot.dill
+  echo run sh wsl.sh on wsl shell
 }
 
 help__scpToPi="step-5 - tranfer folder flutter_assets to pi"

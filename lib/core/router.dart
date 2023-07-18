@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/bindings/enter_id_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/home_screen.dart';
 import 'package:smartbin_ui_flutter/bindings/process_binding.dart';
+import 'package:smartbin_ui_flutter/bindings/scan_qrcode_binding.dart';
 import 'package:smartbin_ui_flutter/views/home_screen.dart';
 import 'package:smartbin_ui_flutter/views/how_to_screen.dart';
 import 'package:smartbin_ui_flutter/views/process_screen.dart';
@@ -44,10 +46,12 @@ class AppRout {
     GetPage(
       name: RoutePath.scanQRCode,
       page: () => const ScanQRCodeScreen(),
+      binding: ScanQrCodeBinding(),
     ),
     GetPage(
       name: RoutePath.enterId,
       page: () => const EnterIDScreen(),
+      binding: EnterIDBinding(),
     ),
     GetPage(
       name: RoutePath.process,

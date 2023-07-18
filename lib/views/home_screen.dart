@@ -15,10 +15,6 @@ class HomeScreen extends GetView<HomeController> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // Image.asset(
-          //   'assets/images/kuse-smart-bin.png',
-          //   height: 50,
-          // ),
           const Text(
             'KUSE SMART BIN',
             style: TextStyle(
@@ -28,27 +24,27 @@ class HomeScreen extends GetView<HomeController> {
               color: Color(0xFF377422),
             ),
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              TrashTypeCircle(
-                type: 'ขวดแก้ว',
-                progress: 30,
-                color: Color(0xFF77AE54),
-                image: 'assets/images/icons/wine.png',
-              ),
-              TrashTypeCircle(
-                type: 'พลาสติก',
-                progress: 80,
-                color: Color.fromARGB(255, 64, 186, 243),
-                image: 'assets/images/icons/plastic.png',
-              ),
-              TrashTypeCircle(
-                type: 'กระป๋อง',
-                progress: 60,
-                color: Color(0xFFFDDE72),
-                image: 'assets/images/icons/beer-can.png',
-              ),
+              Obx(() => TrashTypeCircle(
+                    type: 'ขวดแก้ว',
+                    progress: controller.wine.value,
+                    color: const Color(0xFF77AE54),
+                    image: 'assets/images/icons/wine.png',
+                  )),
+              Obx(() => TrashTypeCircle(
+                    type: 'พลาสติก',
+                    progress: controller.platstic.value,
+                    color: const Color.fromARGB(255, 64, 186, 243),
+                    image: 'assets/images/icons/plastic.png',
+                  )),
+              Obx(() => TrashTypeCircle(
+                    type: 'กระป๋อง',
+                    progress: controller.can.value,
+                    color: const Color(0xFFFDDE72),
+                    image: 'assets/images/icons/beer-can.png',
+                  )),
             ],
           ),
           Row(

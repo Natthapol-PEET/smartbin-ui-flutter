@@ -52,7 +52,7 @@ class SavingDonateScreen extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () => Get.toNamed(RoutePath.process),
+              onTap: () => Get.offAllNamed(RoutePath.process),
               child: Column(
                 children: [
                   Material(

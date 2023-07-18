@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smartbin_ui_flutter/core/router.dart';
+import 'package:smartbin_ui_flutter/controllers/enter_id_controller.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
-class EnterIDScreen extends StatelessWidget {
+class EnterIDScreen extends GetView<EnterIDController> {
   const EnterIDScreen({super.key});
 
   @override
@@ -25,7 +25,7 @@ class EnterIDScreen extends StatelessWidget {
             fontFamily: 'kanit',
             fontSize: 48,
             fontWeight: FontWeight.w500,
-            color: const Color(0xFF377422),
+            color: Color(0xFF377422),
           ),
         ),
         const SizedBox(height: 30),
@@ -35,19 +35,19 @@ class EnterIDScreen extends StatelessWidget {
           children: [
             Column(
               children: [
-                const Material(
+                Material(
                   elevation: 10,
                   child: SizedBox(
                     width: 300,
                     height: 65,
                     child: Center(
-                      child: Text(
-                        '6040202424',
-                        style: TextStyle(
-                          fontFamily: 'kanit',
-                          fontSize: 36,
-                        ),
-                      ),
+                      child: Obx(() => Text(
+                            controller.studentId.value,
+                            style: const TextStyle(
+                              fontFamily: 'kanit',
+                              fontSize: 36,
+                            ),
+                          )),
                     ),
                   ),
                 ),
@@ -57,12 +57,11 @@ class EnterIDScreen extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () => Get.back(),
-                      child:
-                          Image.asset('assets/images/buttons/back-short.png'),
+                      child: Image.asset('assets/images/buttons/back-short.png'),
                     ),
                     const SizedBox(width: 20),
                     InkWell(
-                      onTap: () => Get.toNamed(RoutePath.process),
+                      onTap: controller.gotoProcess,
                       child: Image.asset('assets/images/buttons/submit.png'),
                     ),
                   ],
@@ -92,7 +91,7 @@ class EnterIDScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: InkWell(
-        onTap: () {},
+        onTap: text == 'Clear' ? controller.clear : () => controller.addDigit(text),
         child: Material(
           elevation: 4,
           borderRadius: BorderRadius.circular(10),

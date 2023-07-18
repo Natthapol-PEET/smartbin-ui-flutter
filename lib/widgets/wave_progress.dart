@@ -22,8 +22,7 @@ class WaveProgress extends StatefulWidget {
   State<WaveProgress> createState() => _WaveProgressState();
 }
 
-class _WaveProgressState extends State<WaveProgress>
-    with TickerProviderStateMixin {
+class _WaveProgressState extends State<WaveProgress> with TickerProviderStateMixin {
   late AnimationController controller;
 
   @override
@@ -54,13 +53,13 @@ class _WaveProgressState extends State<WaveProgress>
           animation: controller,
           builder: (context, child) {
             return CustomPaint(
-              child: widget.child,
               painter: WaveProgressPainter(
                 controller,
                 widget.borderColor,
                 widget.fillColor,
                 widget.progress,
               ),
+              child: widget.child,
             );
           },
         ),
@@ -74,9 +73,7 @@ class WaveProgressPainter extends CustomPainter {
   Color borderColor, fillColor;
   double progress;
 
-  WaveProgressPainter(
-      this.animation, this.borderColor, this.fillColor, this.progress)
-      : super(repaint: animation);
+  WaveProgressPainter(this.animation, this.borderColor, this.fillColor, this.progress) : super(repaint: animation);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -90,13 +87,7 @@ class WaveProgressPainter extends CustomPainter {
     Path path = Path();
     path.moveTo(0.0, baseHeight);
     for (double i = 0.0; i < size.width; i++) {
-      path.lineTo(
-          i,
-          baseHeight +
-              sin((i / size.width * 2 * pi * n) +
-                      (animation.value * 2 * pi) +
-                      pi * 1) *
-                  amp);
+      path.lineTo(i, baseHeight + sin((i / size.width * 2 * pi * n) + (animation.value * 2 * pi) + pi * 1) * amp);
     }
 
     path.lineTo(size.width, size.height);
@@ -112,11 +103,7 @@ class WaveProgressPainter extends CustomPainter {
     path = Path();
     path.moveTo(0.0, baseHeight);
     for (double i = 0.0; i < size.width; i++) {
-      path.lineTo(
-          i,
-          baseHeight +
-              sin((i / size.width * 2 * pi * n) + (animation.value * 2 * pi)) *
-                  amp);
+      path.lineTo(i, baseHeight + sin((i / size.width * 2 * pi * n) + (animation.value * 2 * pi)) * amp);
     }
 
     path.lineTo(size.width, size.height);
@@ -140,10 +127,7 @@ class WaveProgressPainter extends CustomPainter {
 class CircleClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    return Path()
-      ..addOval(Rect.fromCircle(
-          center: Offset(size.width / 2, size.height / 2),
-          radius: size.width / 2));
+    return Path()..addOval(Rect.fromCircle(center: Offset(size.width / 2, size.height / 2), radius: size.width / 2));
   }
 
   @override

@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:smartbin_ui_flutter/core/controller_base.dart';
 
 class ProcessController extends BaseController {
+  String get studentId => Get.arguments ?? 'คนรักษ์โลก';
   RxInt point = 0.obs;
   Timer? timer;
   bool countdown = false;
@@ -54,7 +56,6 @@ class ProcessController extends BaseController {
         countdown = true;
       } else if (point.value == 0) {
         countdown = false;
-        isReady.toggle();
       }
 
       if (countdown) {
@@ -62,12 +63,37 @@ class ProcessController extends BaseController {
       } else {
         point++;
 
-        wine.value += 3;
-        plastic.value += 1;
+        // wine.value += 3;
+        // plastic.value += 1;
         // can.value += 2;
+      }
+    });
+  }
+
+  void exchange() {
+    // processing
+    isReady(false);
+
+    var rng = Random();
+    int number = rng.nextInt(3);
+
+    Timer(const Duration(seconds: 3), () {
+      switch (number) {
+        case 0:
+          wine.value += 1;
+          break;
+        case 1:
+          plastic.value += 1;
+          break;
+        case 2:
+          can += 1;
+          break;
+        default:
+          break;
       }
 
       calPercen();
+      isReady(true);
     });
   }
 

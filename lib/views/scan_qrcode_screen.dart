@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/controllers/scan_qrcode_controller.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
-class ScanQRCodeScreen extends StatelessWidget {
+class ScanQRCodeScreen extends GetView<ScanQRCodeController> {
   const ScanQRCodeScreen({super.key});
 
   @override
@@ -30,15 +31,15 @@ class ScanQRCodeScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        const Text(
-          'โปรดสแกนภายในเวลา 30 วินาที',
-          style: TextStyle(
-            fontFamily: 'kanit',
-            fontSize: 22,
-            fontWeight: FontWeight.w500,
-            color: Colors.black,
-          ),
-        ),
+        Obx(() => Text(
+              'โปรดสแกนภายในเวลา ${controller.count.value} วินาที',
+              style: const TextStyle(
+                fontFamily: 'kanit',
+                fontSize: 22,
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
+            )),
         const SizedBox(height: 35),
         InkWell(
           onTap: () => Get.back(),
