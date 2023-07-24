@@ -11,6 +11,8 @@ class ProcessController extends BaseController {
   bool countdown = false;
   RxBool isReady = true.obs;
 
+  RxString selectType = ''.obs;
+
   // MAX 160
   int max = 160;
   RxDouble canWidth = 0.0.obs;

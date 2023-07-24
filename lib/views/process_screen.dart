@@ -131,7 +131,132 @@ class ProcessScreen extends GetView<ProcessController> {
                   Row(
                     children: [
                       InkWell(
-                        onTap: controller.exchange,
+                        // onTap: controller.exchange,
+                        // onTap: () => Get.toNamed(RoutePath.userSelectType),
+                        onTap: () {
+                          Get.defaultDialog(
+                            title: 'ช่วยบอกประเภทขยะที่ทิ้งหน่อยค้าบ',
+                            titlePadding: const EdgeInsets.symmetric(vertical: 20),
+                            titleStyle: const TextStyle(
+                              fontFamily: 'Kanit',
+                              fontSize: 28,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            barrierDismissible: false,
+                            content: SizedBox(
+                              width: 600,
+                              height: 300,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width: 370,
+                                        height: 240,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white.withOpacity(0.5),
+                                            borderRadius: BorderRadius.circular(10),
+                                            border: Border.all()),
+                                        child: Column(
+                                          children: [
+                                            const SizedBox(height: 6),
+                                            Image.asset(
+                                              'assets/images/icons/recycle.png',
+                                              width: 50,
+                                              fit: BoxFit.cover,
+                                            ),
+                                            const SizedBox(height: 10),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                              children: [
+                                                itemSelectType(
+                                                  type: 'ขวดแก้ว',
+                                                  image: 'assets/images/icons/wine.png',
+                                                  iconColor: const Color(0xFF77AE54).withOpacity(0.8),
+                                                  bgColor: const Color(0xFF77AE54).withOpacity(0.1),
+                                                  selectColor: Colors.green,
+                                                ),
+                                                itemSelectType(
+                                                  type: 'พลาสติก',
+                                                  image: 'assets/images/icons/coffee.png',
+                                                  iconColor: const Color.fromARGB(255, 64, 186, 243).withOpacity(0.8),
+                                                  bgColor: const Color.fromARGB(255, 64, 186, 243).withOpacity(0.1),
+                                                  selectColor: Colors.blue,
+                                                ),
+                                                itemSelectType(
+                                                  type: 'กระป๋อง',
+                                                  image: 'assets/images/icons/coffee.png',
+                                                  iconColor: const Color(0xFFFDDE72),
+                                                  bgColor: const Color(0xFFFDDE72).withOpacity(0.2),
+                                                  selectColor: Colors.yellow.shade700,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 130,
+                                        height: 240,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white.withOpacity(0.5),
+                                            borderRadius: BorderRadius.circular(10),
+                                            border: Border.all()),
+                                        child: Column(
+                                          children: [
+                                            const SizedBox(height: 10),
+                                            Image.asset(
+                                              'assets/images/icons/non-recycle.png',
+                                              width: 50,
+                                              fit: BoxFit.cover,
+                                            ),
+                                            const SizedBox(height: 6),
+                                            itemSelectType(
+                                              type: 'ขยะ\nประเภทอื่น',
+                                              image: 'assets/images/icons/coffee.png',
+                                              iconColor: Colors.redAccent.withOpacity(0.8),
+                                              bgColor: Colors.redAccent.withOpacity(0.1),
+                                              selectColor: Colors.red,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      InkWell(
+                                        onTap: () => Get.back(),
+                                        child: Image.asset(
+                                          'assets/images/buttons/back-short.png',
+                                          height: 50,
+                                          fit: BoxFit.fitHeight,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 14),
+                                      InkWell(
+                                        onTap: () {
+                                          Get.back();
+                                          controller.exchange();
+                                          controller.selectType('');
+                                        },
+                                        child: Image.asset(
+                                          'assets/images/buttons/submit.png',
+                                          height: 50,
+                                          fit: BoxFit.fitHeight,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
                         child: Image.asset('assets/images/buttons/exchange.png', width: 120),
                       ),
                       const SizedBox(width: 20),
@@ -189,6 +314,60 @@ class ProcessScreen extends GetView<ProcessController> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget itemSelectType({
+    required String type,
+    required Color iconColor,
+    required Color bgColor,
+    required Color selectColor,
+    required String image,
+  }) {
+    return InkWell(
+      onTap: () => controller.selectType(type),
+      child: Obx(() => Container(
+            width: 100,
+            height: 150,
+            decoration: BoxDecoration(
+              color: bgColor,
+              borderRadius: BorderRadius.circular(8),
+              border: controller.selectType.value == type ? Border.all(color: selectColor, width: 2) : null,
+            ),
+            child: Column(
+              children: [
+                const SizedBox(height: 10),
+                SizedBox(
+                  width: 80,
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 45,
+                        height: 45,
+                        padding: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.only(bottom: 2),
+                        decoration: BoxDecoration(
+                          color: iconColor,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: Image.asset(image),
+                      ),
+                      const SizedBox(height: 6),
+                      Text(
+                        type,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontFamily: 'kanit',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )),
     );
   }
 
