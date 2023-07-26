@@ -13,7 +13,12 @@ class HowToScreen extends StatelessWidget {
         height: SCREEN_HEIGHT,
         child: Stack(
           children: [
-            Image.asset('assets/images/screens/howto.png'),
+            Image.asset(
+              'assets/images/screens/howto.png',
+              width: SCREEN_WIDTH,
+              height: SCREEN_HEIGHT,
+              fit: BoxFit.fill,
+            ),
             Positioned(
               left: SCREEN_WIDTH / 2 - 45,
               bottom: 30,

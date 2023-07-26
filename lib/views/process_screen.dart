@@ -323,7 +323,6 @@ class ProcessScreen extends GetView<ProcessController> {
                   onTap: () {
                     Get.back();
                     controller.exchange();
-                    controller.selectType('');
                   },
                   child: Image.asset(
                     'assets/images/buttons/submit.png',

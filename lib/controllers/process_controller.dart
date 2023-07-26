@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:smartbin_ui_flutter/core/controller_base.dart';
@@ -30,7 +29,7 @@ class ProcessController extends BaseController {
   Timer? displayDateTimer;
 
   Timer? countdownTimer;
-  DateTime cdown = DateTime(0, 0, 0, 0, 1);
+  DateTime cdown = DateTime(0, 0, 0, 0, 15);
   RxString displayCountdown = '15 : 00'.obs;
 
   @override
@@ -89,25 +88,26 @@ class ProcessController extends BaseController {
     // processing
     isReady(false);
 
-    var rng = Random();
-    int number = rng.nextInt(3);
-
     Timer(const Duration(seconds: 3), () {
-      switch (number) {
-        case 0:
+      switch (selectType.value) {
+        case 'ขวดแก้ว':
           wine.value += 1;
           break;
-        case 1:
+        case 'พลาสติก':
           plastic.value += 1;
           break;
-        case 2:
+        case 'กระป๋อง':
           can += 1;
           break;
         default:
           break;
       }
 
-      calPercen();
+      if (wine.value + plastic.value + can.value > 0) {
+        calPercen();
+      }
+
+      selectType.value == '';
       isReady(true);
     });
   }
