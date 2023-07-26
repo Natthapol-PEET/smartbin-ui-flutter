@@ -16,12 +16,12 @@ class QRCodeIDScreen extends StatelessWidget {
           'เข้าสู่ระบบโดย...',
           style: TextStyle(
             fontFamily: 'kanit',
-            fontSize: 48,
+            fontSize: 28,
             fontWeight: FontWeight.w500,
             color: Color(0xFF377422),
           ),
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 20),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -35,15 +35,16 @@ class QRCodeIDScreen extends StatelessWidget {
                     elevation: 10,
                     child: Image.asset(
                       'assets/images/icons/qr-code.png',
-                      width: 150,
-                      height: 150,
+                      width: 120,
+                      height: 120,
                     ),
                   ),
+                  const SizedBox(height: 5),
                   const Text(
                     'สแกนคิวอาร์โค้ด',
                     style: TextStyle(
                       fontFamily: 'kanit',
-                      fontSize: 28,
+                      fontSize: 22,
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF377422),
                     ),
@@ -53,7 +54,7 @@ class QRCodeIDScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'kanit',
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w500,
                       color: Colors.black,
                     ),
@@ -70,15 +71,16 @@ class QRCodeIDScreen extends StatelessWidget {
                     elevation: 10,
                     child: Image.asset(
                       'assets/images/icons/id.png',
-                      width: 150,
-                      height: 150,
+                      width: 120,
+                      height: 120,
                     ),
                   ),
+                  const SizedBox(height: 5),
                   const Text(
                     'รหัสนิสิต/นักศึกษา',
                     style: TextStyle(
                       fontFamily: 'kanit',
-                      fontSize: 28,
+                      fontSize: 22,
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF377422),
                     ),
@@ -88,7 +90,7 @@ class QRCodeIDScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'kanit',
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w500,
                       color: Colors.redAccent,
                     ),
@@ -98,10 +100,10 @@ class QRCodeIDScreen extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 35),
+        const SizedBox(height: 25),
         InkWell(
           onTap: () => Get.back(),
-          child: Image.asset('assets/images/buttons/howto-back.png'),
+          child: Image.asset('assets/images/buttons/howto-back.png', height: 45),
         ),
       ],
     ));

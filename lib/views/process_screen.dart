@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:smartbin_ui_flutter/controllers/process_controller.dart';
+import 'package:smartbin_ui_flutter/core/const.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
 class ProcessScreen extends GetView<ProcessController> {
@@ -17,21 +18,21 @@ class ProcessScreen extends GetView<ProcessController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset('assets/images/icons/KUSE-logo.png', height: 60),
+                Image.asset('assets/images/icons/KUSE-logo.png', height: 45),
                 Row(
                   children: [
-                    Image.asset('assets/images/icons/calendar.png', width: 50, height: 50),
-                    const SizedBox(width: 10),
+                    Image.asset('assets/images/icons/calendar.png', width: 32, height: 32),
+                    const SizedBox(width: 5),
                     Obx(() => Text(
                           controller.displayDate.value,
-                          style: const TextStyle(fontFamily: 'kanit', fontSize: 32, fontWeight: FontWeight.w500),
+                          style: const TextStyle(fontFamily: 'kanit', fontSize: 20, fontWeight: FontWeight.w500),
                         )),
-                    const SizedBox(width: 20),
-                    Image.asset('assets/images/icons/clock.png', width: 50, height: 50),
                     const SizedBox(width: 10),
+                    Image.asset('assets/images/icons/clock.png', width: 32, height: 32),
+                    const SizedBox(width: 5),
                     Obx(() => Text(
                           controller.displayTime.value,
-                          style: const TextStyle(fontFamily: 'kanit', fontSize: 32, fontWeight: FontWeight.w500),
+                          style: const TextStyle(fontFamily: 'kanit', fontSize: 20, fontWeight: FontWeight.w500),
                         )),
                   ],
                 ),
@@ -45,8 +46,8 @@ class ProcessScreen extends GetView<ProcessController> {
               Column(
                 children: [
                   Container(
-                    width: 800 / 2.2,
-                    height: 300,
+                    width: SCREEN_WIDTH / 2.2,
+                    height: 220,
                     padding: const EdgeInsets.all(10),
                     decoration:
                         BoxDecoration(color: Colors.white.withOpacity(0.5), borderRadius: BorderRadius.circular(8)),
@@ -55,24 +56,24 @@ class ProcessScreen extends GetView<ProcessController> {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset('assets/images/icons/user.png', width: 80),
+                            Image.asset('assets/images/icons/user.png', width: 55),
                             const SizedBox(width: 10),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text('สวัสดี คุณ',
-                                    style: TextStyle(fontFamily: 'kanit', fontSize: 22, fontWeight: FontWeight.w500)),
-                                const SizedBox(height: 5),
+                                    style: TextStyle(fontFamily: 'kanit', fontSize: 18, fontWeight: FontWeight.w500)),
+                                const SizedBox(height: 3),
                                 Container(
-                                  width: 180,
-                                  height: 40,
+                                  width: 140,
+                                  height: 30,
                                   decoration: BoxDecoration(
                                       color: Colors.amber.shade300, borderRadius: BorderRadius.circular(10)),
                                   child: Center(
                                     child: Text(
                                       controller.studentId,
                                       style: const TextStyle(
-                                          fontFamily: 'kanit', fontSize: 22, fontWeight: FontWeight.w500),
+                                          fontFamily: 'kanit', fontSize: 18, fontWeight: FontWeight.w500),
                                     ),
                                   ),
                                 ),
@@ -80,197 +81,93 @@ class ProcessScreen extends GetView<ProcessController> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 35),
-                        Obx(() => IndexedStack(
-                              index: controller.isReady.isTrue ? 0 : 1,
-                              children: [
-                                SizedBox(
-                                  width: 800 / 2.2,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Image.asset('assets/images/icons/relax.png', width: 100),
-                                      const SizedBox(height: 10),
-                                      const Text(
-                                        'ถังขยะพร้อมทำงาน',
-                                        style: TextStyle(
-                                          fontFamily: 'kanit',
-                                          fontSize: 28,
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                        const SizedBox(height: 20),
+                        Obx(
+                          () => IndexedStack(
+                            index: controller.isReady.isTrue ? 0 : 1,
+                            children: [
+                              SizedBox(
+                                width: SCREEN_WIDTH / 2.2,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Image.asset('assets/images/icons/relax.png', width: 55),
+                                    const SizedBox(height: 10),
+                                    const Text(
+                                      'ถังขยะพร้อมทำงาน',
+                                      style: TextStyle(
+                                        fontFamily: 'kanit',
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 800 / 2.2,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      const SpinKitPouringHourGlassRefined(color: Colors.orange, size: 80),
-                                      const SizedBox(height: 10),
-                                      Obx(() => Text(
-                                            'กำลังประมวลผล ${'. ' * controller.point.value}',
-                                            style: const TextStyle(
-                                              fontFamily: 'kanit',
-                                              fontSize: 28,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          )),
-                                    ],
-                                  ),
+                              ),
+                              SizedBox(
+                                width: SCREEN_WIDTH / 2.2,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const SpinKitPouringHourGlassRefined(color: Colors.orange, size: 55),
+                                    const SizedBox(height: 10),
+                                    Obx(() => Text(
+                                          'กำลังประมวลผล ${'. ' * controller.point.value}',
+                                          style: const TextStyle(
+                                            fontFamily: 'kanit',
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        )),
+                                  ],
                                 ),
-                              ],
-                            )),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Material(
+                          color: Colors.white.withOpacity(0.5),
+                          shape: const StadiumBorder(),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5),
+                            child: Obx(() => Text(
+                                  'เวลาที่เหลือในการทำรายการ ${controller.displayCountdown.value} นาที',
+                                  style: TextStyle(
+                                    fontFamily: 'kanit',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.amber.shade900,
+                                  ),
+                                )),
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 12),
                   Row(
                     children: [
                       InkWell(
                         // onTap: controller.exchange,
                         // onTap: () => Get.toNamed(RoutePath.userSelectType),
-                        onTap: () {
-                          Get.defaultDialog(
-                            title: 'ช่วยบอกประเภทขยะที่ทิ้งหน่อยค้าบ',
-                            titlePadding: const EdgeInsets.symmetric(vertical: 20),
-                            titleStyle: const TextStyle(
-                              fontFamily: 'Kanit',
-                              fontSize: 28,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            barrierDismissible: false,
-                            content: SizedBox(
-                              width: 600,
-                              height: 300,
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        width: 370,
-                                        height: 240,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white.withOpacity(0.5),
-                                            borderRadius: BorderRadius.circular(10),
-                                            border: Border.all()),
-                                        child: Column(
-                                          children: [
-                                            const SizedBox(height: 6),
-                                            Image.asset(
-                                              'assets/images/icons/recycle.png',
-                                              width: 50,
-                                              fit: BoxFit.cover,
-                                            ),
-                                            const SizedBox(height: 10),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                itemSelectType(
-                                                  type: 'ขวดแก้ว',
-                                                  image: 'assets/images/icons/wine.png',
-                                                  iconColor: const Color(0xFF77AE54).withOpacity(0.8),
-                                                  bgColor: const Color(0xFF77AE54).withOpacity(0.1),
-                                                  selectColor: Colors.green,
-                                                ),
-                                                itemSelectType(
-                                                  type: 'พลาสติก',
-                                                  image: 'assets/images/icons/coffee.png',
-                                                  iconColor: const Color.fromARGB(255, 64, 186, 243).withOpacity(0.8),
-                                                  bgColor: const Color.fromARGB(255, 64, 186, 243).withOpacity(0.1),
-                                                  selectColor: Colors.blue,
-                                                ),
-                                                itemSelectType(
-                                                  type: 'กระป๋อง',
-                                                  image: 'assets/images/icons/coffee.png',
-                                                  iconColor: const Color(0xFFFDDE72),
-                                                  bgColor: const Color(0xFFFDDE72).withOpacity(0.2),
-                                                  selectColor: Colors.yellow.shade700,
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 130,
-                                        height: 240,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white.withOpacity(0.5),
-                                            borderRadius: BorderRadius.circular(10),
-                                            border: Border.all()),
-                                        child: Column(
-                                          children: [
-                                            const SizedBox(height: 10),
-                                            Image.asset(
-                                              'assets/images/icons/non-recycle.png',
-                                              width: 50,
-                                              fit: BoxFit.cover,
-                                            ),
-                                            const SizedBox(height: 6),
-                                            itemSelectType(
-                                              type: 'ขยะ\nประเภทอื่น',
-                                              image: 'assets/images/icons/coffee.png',
-                                              iconColor: Colors.redAccent.withOpacity(0.8),
-                                              bgColor: Colors.redAccent.withOpacity(0.1),
-                                              selectColor: Colors.red,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      InkWell(
-                                        onTap: () => Get.back(),
-                                        child: Image.asset(
-                                          'assets/images/buttons/back-short.png',
-                                          height: 50,
-                                          fit: BoxFit.fitHeight,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 14),
-                                      InkWell(
-                                        onTap: () {
-                                          Get.back();
-                                          controller.exchange();
-                                          controller.selectType('');
-                                        },
-                                        child: Image.asset(
-                                          'assets/images/buttons/submit.png',
-                                          height: 50,
-                                          fit: BoxFit.fitHeight,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                        child: Image.asset('assets/images/buttons/exchange.png', width: 120),
+                        onTap: _showDialog,
+                        child: Image.asset('assets/images/buttons/exchange.png', width: 90),
                       ),
-                      const SizedBox(width: 20),
+                      const SizedBox(width: 12),
                       InkWell(
                         onTap: () {},
-                        child: Image.asset('assets/images/buttons/look-score.png', width: 130),
+                        child: Image.asset('assets/images/buttons/look-score.png', width: 95),
                       ),
                     ],
                   ),
                 ],
               ),
               Container(
-                width: 800 / 2.5 + 1,
-                height: 360,
+                width: SCREEN_WIDTH / 2.5 + 1,
+                height: 260,
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                 decoration: BoxDecoration(
                   color: Colors.green.shade300.withOpacity(0.5),
@@ -317,6 +214,131 @@ class ProcessScreen extends GetView<ProcessController> {
     );
   }
 
+  void _showDialog() {
+    Get.defaultDialog(
+      title: 'ช่วยบอกประเภทขยะที่ทิ้งหน่อยค้าบ',
+      titlePadding: const EdgeInsets.symmetric(vertical: 12),
+      titleStyle: const TextStyle(
+        fontFamily: 'Kanit',
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+      ),
+      barrierDismissible: false,
+      content: SizedBox(
+        width: SCREEN_WIDTH * 0.8,
+        height: SCREEN_HEIGHT * 0.6,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 300,
+                  height: 165,
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all()),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 6),
+                      Image.asset(
+                        'assets/images/icons/recycle.png',
+                        width: 35,
+                        fit: BoxFit.cover,
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          itemSelectType(
+                            type: 'ขวดแก้ว',
+                            image: 'assets/images/icons/wine.png',
+                            iconColor: const Color(0xFF77AE54).withOpacity(0.8),
+                            bgColor: const Color(0xFF77AE54).withOpacity(0.1),
+                            selectColor: Colors.green,
+                          ),
+                          itemSelectType(
+                            type: 'พลาสติก',
+                            image: 'assets/images/icons/coffee.png',
+                            iconColor: const Color.fromARGB(255, 64, 186, 243).withOpacity(0.8),
+                            bgColor: const Color.fromARGB(255, 64, 186, 243).withOpacity(0.1),
+                            selectColor: Colors.blue,
+                          ),
+                          itemSelectType(
+                            type: 'กระป๋อง',
+                            image: 'assets/images/icons/coffee.png',
+                            iconColor: const Color(0xFFFDDE72),
+                            bgColor: const Color(0xFFFDDE72).withOpacity(0.2),
+                            selectColor: Colors.yellow.shade700,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 165,
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all()),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      Image.asset(
+                        'assets/images/icons/non-recycle.png',
+                        width: 35,
+                        fit: BoxFit.cover,
+                      ),
+                      const SizedBox(height: 6),
+                      itemSelectType(
+                        type: 'ขยะ\nประเภทอื่น',
+                        image: 'assets/images/icons/coffee.png',
+                        iconColor: Colors.redAccent.withOpacity(0.8),
+                        bgColor: Colors.redAccent.withOpacity(0.1),
+                        selectColor: Colors.red,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () => Get.back(),
+                  child: Image.asset(
+                    'assets/images/buttons/back-short.png',
+                    height: 35,
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
+                const SizedBox(width: 14),
+                InkWell(
+                  onTap: () {
+                    Get.back();
+                    controller.exchange();
+                    controller.selectType('');
+                  },
+                  child: Image.asset(
+                    'assets/images/buttons/submit.png',
+                    height: 35,
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget itemSelectType({
     required String type,
     required Color iconColor,
@@ -327,8 +349,8 @@ class ProcessScreen extends GetView<ProcessController> {
     return InkWell(
       onTap: () => controller.selectType(type),
       child: Obx(() => Container(
-            width: 100,
-            height: 150,
+            width: 80,
+            height: 100,
             decoration: BoxDecoration(
               color: bgColor,
               borderRadius: BorderRadius.circular(8),
@@ -336,15 +358,15 @@ class ProcessScreen extends GetView<ProcessController> {
             ),
             child: Column(
               children: [
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 SizedBox(
                   width: 80,
                   child: Column(
                     children: [
                       Container(
-                        width: 45,
-                        height: 45,
-                        padding: const EdgeInsets.all(10),
+                        width: 35,
+                        height: 35,
+                        padding: const EdgeInsets.all(6),
                         margin: const EdgeInsets.only(bottom: 2),
                         decoration: BoxDecoration(
                           color: iconColor,
@@ -358,7 +380,7 @@ class ProcessScreen extends GetView<ProcessController> {
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontFamily: 'kanit',
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -379,7 +401,7 @@ class ProcessScreen extends GetView<ProcessController> {
     required RxDouble percen,
   }) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 7),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -387,13 +409,13 @@ class ProcessScreen extends GetView<ProcessController> {
           Row(
             children: [
               SizedBox(
-                width: 80,
+                width: 60,
                 child: Column(
                   children: [
                     Container(
-                      width: 45,
-                      height: 45,
-                      padding: const EdgeInsets.all(10),
+                      width: 32,
+                      height: 32,
+                      padding: const EdgeInsets.all(8),
                       margin: const EdgeInsets.only(bottom: 2),
                       decoration: BoxDecoration(
                         color: color,
@@ -405,7 +427,7 @@ class ProcessScreen extends GetView<ProcessController> {
                       type,
                       style: const TextStyle(
                         fontFamily: 'kanit',
-                        fontSize: 16,
+                        fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -417,7 +439,7 @@ class ProcessScreen extends GetView<ProcessController> {
                 children: [
                   Obx(() => AnimatedContainer(
                         width: percen.value,
-                        height: 40,
+                        height: 35,
                         duration: const Duration(milliseconds: 600),
                         decoration: BoxDecoration(
                           color: color,
@@ -425,15 +447,15 @@ class ProcessScreen extends GetView<ProcessController> {
                         ),
                       )),
                   SizedBox(
-                    width: 160,
-                    height: 40,
+                    width: controller.max,
+                    height: 35,
                     child: Center(
                       child: Obx(() => Text(
                             score.toString(),
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               fontFamily: 'kanit',
-                              fontSize: 22,
+                              fontSize: 18,
                               fontWeight: FontWeight.w500,
                             ),
                           )),
@@ -443,12 +465,12 @@ class ProcessScreen extends GetView<ProcessController> {
               ),
             ],
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: 4),
           const Text(
             'ชิ้น',
             style: TextStyle(
               fontFamily: 'kanit',
-              fontSize: 18,
+              fontSize: 14,
               fontWeight: FontWeight.w500,
             ),
           ),

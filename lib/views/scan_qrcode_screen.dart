@@ -16,18 +16,18 @@ class ScanQRCodeScreen extends GetView<ScanQRCodeController> {
           'แสกน QR Code',
           style: TextStyle(
             fontFamily: 'kanit',
-            fontSize: 48,
+            fontSize: 28,
             fontWeight: FontWeight.w500,
             color: Color(0xFF377422),
           ),
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 20),
         Material(
           elevation: 10,
           child: Image.asset(
             'assets/images/qr-code.png',
-            width: 150,
-            height: 150,
+            width: 120,
+            height: 120,
           ),
         ),
         const SizedBox(height: 10),
@@ -35,7 +35,7 @@ class ScanQRCodeScreen extends GetView<ScanQRCodeController> {
               'โปรดสแกนภายในเวลา ${controller.count.value} วินาที',
               style: const TextStyle(
                 fontFamily: 'kanit',
-                fontSize: 22,
+                fontSize: 20,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
               ),
@@ -43,7 +43,7 @@ class ScanQRCodeScreen extends GetView<ScanQRCodeController> {
         const SizedBox(height: 35),
         InkWell(
           onTap: () => Get.back(),
-          child: Image.asset('assets/images/buttons/howto-back.png'),
+          child: Image.asset('assets/images/buttons/howto-back.png', height: 45),
         ),
       ],
     ));

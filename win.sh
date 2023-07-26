@@ -1,4 +1,4 @@
-flutter pub get & flutter build bundle & C:\Users\natth\fvm\default\bin\cache\dart-sdk\bin\dart.exe ^
+fvm flutter pub get & fvm flutter build bundle & C:\Users\natth\fvm\default\bin\cache\dart-sdk\bin\dart.exe ^
   C:\Users\natth\fvm\default\bin\cache\dart-sdk\bin\snapshots\frontend_server.dart.snapshot ^
   --sdk-root C:\Users\natth\fvm\default\bin\cache\artifacts\engine\common\flutter_patched_sdk_product ^
   --target=flutter ^

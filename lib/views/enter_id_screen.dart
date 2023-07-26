@@ -23,12 +23,12 @@ class EnterIDScreen extends GetView<EnterIDController> {
           'ป้อนรหัสนิสิต/นักศึกษา',
           style: TextStyle(
             fontFamily: 'kanit',
-            fontSize: 48,
+            fontSize: 28,
             fontWeight: FontWeight.w500,
             color: Color(0xFF377422),
           ),
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 20),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -38,15 +38,12 @@ class EnterIDScreen extends GetView<EnterIDController> {
                 Material(
                   elevation: 10,
                   child: SizedBox(
-                    width: 300,
-                    height: 65,
+                    width: 200,
+                    height: 48,
                     child: Center(
                       child: Obx(() => Text(
                             controller.studentId.value,
-                            style: const TextStyle(
-                              fontFamily: 'kanit',
-                              fontSize: 36,
-                            ),
+                            style: const TextStyle(fontFamily: 'kanit', fontSize: 24, fontWeight: FontWeight.w500),
                           )),
                     ),
                   ),
@@ -57,12 +54,12 @@ class EnterIDScreen extends GetView<EnterIDController> {
                   children: [
                     InkWell(
                       onTap: () => Get.back(),
-                      child: Image.asset('assets/images/buttons/back-short.png'),
+                      child: Image.asset('assets/images/buttons/back-short.png', height: 45),
                     ),
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 15),
                     InkWell(
                       onTap: controller.gotoProcess,
-                      child: Image.asset('assets/images/buttons/submit.png'),
+                      child: Image.asset('assets/images/buttons/submit.png', height: 45),
                     ),
                   ],
                 ),
@@ -97,14 +94,14 @@ class EnterIDScreen extends GetView<EnterIDController> {
           borderRadius: BorderRadius.circular(10),
           color: text == 'Clear' ? Colors.amber.shade100 : Colors.blue.shade50,
           child: SizedBox(
-            width: text == 'Clear' ? 170 : 80,
-            height: 70,
+            width: text == 'Clear' ? 120 : 55,
+            height: 55,
             child: Center(
               child: Text(
                 text,
                 style: const TextStyle(
                   fontFamily: 'kanit',
-                  fontSize: 36,
+                  fontSize: 24,
                   fontWeight: FontWeight.w500,
                 ),
               ),

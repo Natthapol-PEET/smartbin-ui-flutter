@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartbin_ui_flutter/core/const.dart';
 
 class Background extends StatelessWidget {
   const Background({
@@ -16,13 +17,13 @@ class Background extends StatelessWidget {
           Image.asset(
             'assets/images/bg.png',
             fit: BoxFit.cover,
-            width: 800,
-            height: 480,
+            width: SCREEN_WIDTH,
+            height: SCREEN_HEIGHT,
           ),
           Positioned(
             child: SizedBox(
-              width: 800,
-              height: 480,
+              width: SCREEN_WIDTH,
+              height: SCREEN_HEIGHT,
               child: child,
             ),
           ),

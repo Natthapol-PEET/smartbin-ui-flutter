@@ -19,7 +19,7 @@ class HomeScreen extends GetView<HomeController> {
             'KUSE SMART BIN',
             style: TextStyle(
               fontFamily: 'kanit',
-              fontSize: 72,
+              fontSize: 48,
               fontWeight: FontWeight.w500,
               color: Color(0xFF377422),
             ),
@@ -52,12 +52,12 @@ class HomeScreen extends GetView<HomeController> {
             children: [
               InkWell(
                 onTap: () => Get.toNamed(RoutePath.savingDonate),
-                child: Image.asset('assets/images/buttons/exchange.png'),
+                child: Image.asset('assets/images/buttons/exchange.png', height: 50),
               ),
               const SizedBox(width: 50),
               InkWell(
                 onTap: () => Get.toNamed(RoutePath.howto),
-                child: Image.asset('assets/images/buttons/howto.png'),
+                child: Image.asset('assets/images/buttons/howto.png', height: 50),
               ),
             ],
           ),
@@ -84,20 +84,20 @@ class TrashTypeCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WaveProgress(
-      size: 200,
+      size: 150,
       borderColor: Colors.black,
       fillColor: color,
       progress: progress,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(image),
-          const SizedBox(height: 12),
+          Image.asset(image, height: 50),
+          const SizedBox(height: 10),
           Text(
             type,
             style: const TextStyle(
               fontFamily: 'kanit',
-              fontSize: 26,
+              fontSize: 22,
               fontWeight: FontWeight.w500,
               color: Colors.black,
             ),
@@ -106,7 +106,7 @@ class TrashTypeCircle extends StatelessWidget {
             progress == 100 ? 'เต็มแล้ว' : '$progress %',
             style: const TextStyle(
               fontFamily: 'kanit',
-              fontSize: 28,
+              fontSize: 20,
               fontWeight: FontWeight.w400,
               color: Colors.black,
             ),

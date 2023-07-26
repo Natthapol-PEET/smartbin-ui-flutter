@@ -13,8 +13,8 @@ class ProcessController extends BaseController {
 
   RxString selectType = ''.obs;
 
-  // MAX 160
-  int max = 160;
+  // MAX 110
+  double max = 110;
   RxDouble canWidth = 0.0.obs;
   RxDouble plasticWidth = 0.0.obs;
   RxDouble wineWidth = 0.0.obs;
@@ -29,6 +29,10 @@ class ProcessController extends BaseController {
   RxString displayTime = '12 : 33'.obs;
   Timer? displayDateTimer;
 
+  Timer? countdownTimer;
+  DateTime cdown = DateTime(0, 0, 0, 0, 1);
+  RxString displayCountdown = '15 : 00'.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -36,6 +40,15 @@ class ProcessController extends BaseController {
     initDisplayDateTime();
     displayDateTimer = Timer.periodic(const Duration(seconds: 60), (timer) {
       initDisplayDateTime();
+    });
+
+    countdownTimer = Timer.periodic(const Duration(seconds: 1), (_) {
+      displayCountdown.value = DateFormat('mm : ss').format(cdown);
+      cdown = cdown.subtract(const Duration(seconds: 1));
+
+      if (displayCountdown.value == '00 : 00') {
+        countdownTimer?.cancel();
+      }
     });
   }
 
@@ -111,5 +124,6 @@ class ProcessController extends BaseController {
     super.onClose();
     timer?.cancel();
     displayDateTimer?.cancel();
+    countdownTimer?.cancel();
   }
 }

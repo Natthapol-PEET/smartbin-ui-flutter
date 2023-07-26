@@ -16,12 +16,12 @@ class SavingDonateScreen extends StatelessWidget {
           'กรุณาเลือกรายการที่ต้องการ',
           style: TextStyle(
             fontFamily: 'kanit',
-            fontSize: 48,
+            fontSize: 28,
             fontWeight: FontWeight.w500,
             color: Color(0xFF377422),
           ),
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 20),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -35,15 +35,16 @@ class SavingDonateScreen extends StatelessWidget {
                     elevation: 10,
                     child: Image.asset(
                       'assets/images/icons/saving.png',
-                      width: 150,
-                      height: 150,
+                      width: 120,
+                      height: 120,
                     ),
                   ),
+                  const SizedBox(height: 5),
                   const Text(
                     'สะสมแต้ม',
                     style: TextStyle(
                       fontFamily: 'kanit',
-                      fontSize: 28,
+                      fontSize: 22,
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF377422),
                     ),
@@ -60,15 +61,16 @@ class SavingDonateScreen extends StatelessWidget {
                     elevation: 10,
                     child: Image.asset(
                       'assets/images/icons/donate.png',
-                      width: 150,
-                      height: 150,
+                      width: 120,
+                      height: 120,
                     ),
                   ),
+                  const SizedBox(height: 5),
                   const Text(
                     'บริจาค',
                     style: TextStyle(
                       fontFamily: 'kanit',
-                      fontSize: 28,
+                      fontSize: 22,
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF377422),
                     ),
@@ -78,7 +80,7 @@ class SavingDonateScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'kanit',
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w500,
                       color: Colors.redAccent,
                     ),
@@ -88,10 +90,10 @@ class SavingDonateScreen extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 35),
+        const SizedBox(height: 25),
         InkWell(
           onTap: () => Get.back(),
-          child: Image.asset('assets/images/buttons/howto-back.png'),
+          child: Image.asset('assets/images/buttons/howto-back.png', height: 45),
         ),
       ],
     ));
