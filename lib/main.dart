@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialBinding: RootBinding(),
-      initialRoute: RoutePath.loginKuWin,
+      initialRoute: RoutePath.home,
       getPages: AppRout.router,
     );
   }

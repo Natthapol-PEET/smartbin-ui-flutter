@@ -9,4 +9,4 @@ flutter pub get & flutter build bundle & C:\Users\natth\fvm\default\bin\cache\da
   --output-dill build\kernel_snapshot.dill ^
   --verbose ^
   --depfile build\kernel_snapshot.d ^
-  package:app_3_10_5/main.dart
+  package:smartbin_ui_flutter/main.dart

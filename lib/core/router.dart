@@ -1,13 +1,11 @@
 import 'package:get/get.dart';
 import 'package:smartbin_ui_flutter/bindings/enter_id_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/home_screen.dart';
-import 'package:smartbin_ui_flutter/bindings/login_kuwin_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/process_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/scan_qrcode_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/user_select_type_binding.dart';
 import 'package:smartbin_ui_flutter/views/home_screen.dart';
 import 'package:smartbin_ui_flutter/views/how_to_screen.dart';
-import 'package:smartbin_ui_flutter/views/login_kuwin_screen.dart';
 import 'package:smartbin_ui_flutter/views/process_screen.dart';
 import 'package:smartbin_ui_flutter/views/qrcode_id_screen.dart';
 import 'package:smartbin_ui_flutter/views/saving_donate_screen.dart';
@@ -27,7 +25,6 @@ class RoutePath {
   static String process = '/process_screen';
   static String userSelectType = '/userSelectType_screen';
   static String thanks = '/thanks_screen';
-  static String loginKuWin = '/loginKuWin_screen';
 }
 
 class AppRout {
@@ -72,11 +69,6 @@ class AppRout {
     GetPage(
       name: RoutePath.thanks,
       page: () => const ThanksScreen(),
-    ),
-    GetPage(
-      name: RoutePath.loginKuWin,
-      page: () => const LoginKuwinScreen(),
-      binding: LoginKuwinBinding(),
     ),
   ];
 }
