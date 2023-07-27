@@ -50,7 +50,7 @@ help__push="git add . & git commit & git push"
 task_push(){
   git add .
   git commit -m $1
-  git push origin/main
+  git push
 }
 
 ## main
