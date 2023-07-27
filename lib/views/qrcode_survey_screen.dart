@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:smartbin_ui_flutter/controllers/user_select_type_controller.dart';
+import 'package:smartbin_ui_flutter/controllers/qrcode_survey_controller.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
-class UserSelectTypeScreen extends GetView<UserSelectTypeController> {
-  const UserSelectTypeScreen({super.key});
+class QrCodeSurveyScreen extends GetView<QrCodeSurveyController> {
+  const QrCodeSurveyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -2,17 +2,19 @@ import 'package:get/get.dart';
 import 'package:smartbin_ui_flutter/bindings/enter_id_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/home_screen.dart';
 import 'package:smartbin_ui_flutter/bindings/process_binding.dart';
+import 'package:smartbin_ui_flutter/bindings/qrcode_survey_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/scan_qrcode_binding.dart';
-import 'package:smartbin_ui_flutter/bindings/user_select_type_binding.dart';
+import 'package:smartbin_ui_flutter/bindings/total_point_binding.dart';
 import 'package:smartbin_ui_flutter/views/home_screen.dart';
 import 'package:smartbin_ui_flutter/views/how_to_screen.dart';
 import 'package:smartbin_ui_flutter/views/process_screen.dart';
 import 'package:smartbin_ui_flutter/views/qrcode_id_screen.dart';
+import 'package:smartbin_ui_flutter/views/qrcode_survey_screen.dart';
 import 'package:smartbin_ui_flutter/views/saving_donate_screen.dart';
 import 'package:smartbin_ui_flutter/views/enter_id_screen.dart';
 import 'package:smartbin_ui_flutter/views/scan_qrcode_screen.dart';
 import 'package:smartbin_ui_flutter/views/thanks_screen.dart';
-import 'package:smartbin_ui_flutter/views/user_select_type_screen.dart';
+import 'package:smartbin_ui_flutter/views/total_point_screen.dart';
 
 class RoutePath {
   static String home = '/home_screen';
@@ -23,7 +25,8 @@ class RoutePath {
   static String scanQRCode = '/scan_qrcode_screen';
   static String enterId = '/enter_id_screen';
   static String process = '/process_screen';
-  static String userSelectType = '/userSelectType_screen';
+  static String totalPoint = '/total_point_screen';
+  static String survey = '/survey_screen';
   static String thanks = '/thanks_screen';
 }
 
@@ -62,9 +65,14 @@ class AppRout {
       binding: ProcessBinding(),
     ),
     GetPage(
-      name: RoutePath.userSelectType,
-      page: () => const UserSelectTypeScreen(),
-      binding: UserSelectTypeBinding(),
+      name: RoutePath.totalPoint,
+      page: () => const TotalPointScreen(),
+      binding: TotalPointBinding(),
+    ),
+    GetPage(
+      name: RoutePath.survey,
+      page: () => const QrCodeSurveyScreen(),
+      binding: QrCodeSurveyBinding(),
     ),
     GetPage(
       name: RoutePath.thanks,

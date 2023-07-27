@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:smartbin_ui_flutter/controllers/process_controller.dart';
 import 'package:smartbin_ui_flutter/core/const.dart';
+import 'package:smartbin_ui_flutter/core/router.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
 class ProcessScreen extends GetView<ProcessController> {
@@ -151,14 +152,12 @@ class ProcessScreen extends GetView<ProcessController> {
                   Row(
                     children: [
                       InkWell(
-                        // onTap: controller.exchange,
-                        // onTap: () => Get.toNamed(RoutePath.userSelectType),
                         onTap: _showDialog,
                         child: Image.asset('assets/images/buttons/exchange.png', width: 90),
                       ),
                       const SizedBox(width: 12),
                       InkWell(
-                        onTap: () {},
+                        onTap: () => Get.offAllNamed(RoutePath.totalPoint),
                         child: Image.asset('assets/images/buttons/look-score.png', width: 95),
                       ),
                     ],

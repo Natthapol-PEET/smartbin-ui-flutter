@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smartbin_ui_flutter/controllers/home_controller.dart';
 import 'package:smartbin_ui_flutter/core/router.dart';
+import 'package:smartbin_ui_flutter/core/sound.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 import 'package:smartbin_ui_flutter/widgets/wave_progress.dart';
 
@@ -51,7 +52,11 @@ class HomeScreen extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                onTap: () => Get.toNamed(RoutePath.savingDonate),
+                // onTap: () => Get.toNamed(RoutePath.savingDonate),
+                onTap: () {
+                  final source = Get.find<PlaySound>();
+                  source.on(SourceSound.gun);
+                },
                 child: Image.asset('assets/images/buttons/exchange.png', height: 50),
               ),
               const SizedBox(width: 50),

@@ -46,6 +46,13 @@ task_remotePi(){
   # flutter-pi --release flutter_assets
 }
 
+help__push="git add . & git commit & git push"
+task_push(){
+  git add .
+  git commit -m $1
+  git push origin/main
+}
+
 ## main
 list_all_helps() {
   compgen -v | egrep "^help__.*"

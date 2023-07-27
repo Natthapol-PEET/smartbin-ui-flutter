@@ -1,4 +1,4 @@
-2023/07/26-22:56:21.884 6603 Reusing MANIFEST /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.09AcoE/flutter_tools_chrome_device.Sa0WoF/Default/Site Characteristics Database/MANIFEST-000001
-2023/07/26-22:56:21.885 6603 Recovering log #3
-2023/07/26-22:56:21.885 6603 (ignoring error) /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.09AcoE/flutter_tools_chrome_device.Sa0WoF/Default/Site Characteristics Database/000003.log: dropping 2157 bytes; Corruption: checksum mismatch
-2023/07/26-22:56:21.885 6603 Reusing old log /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.09AcoE/flutter_tools_chrome_device.Sa0WoF/Default/Site Characteristics Database/000003.log 
+2023/07/27-16:34:06.648 6a03 Reusing MANIFEST /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.kn4MeX/flutter_tools_chrome_device.e0hkaY/Default/Site Characteristics Database/MANIFEST-000001
+2023/07/27-16:34:06.649 6a03 Recovering log #3
+2023/07/27-16:34:06.649 6a03 (ignoring error) /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.kn4MeX/flutter_tools_chrome_device.e0hkaY/Default/Site Characteristics Database/000003.log: dropping 2382 bytes; Corruption: checksum mismatch
+2023/07/27-16:34:06.649 6a03 Reusing old log /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.kn4MeX/flutter_tools_chrome_device.e0hkaY/Default/Site Characteristics Database/000003.log 
