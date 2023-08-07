@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:smartbin_ui_flutter/core/controller_base.dart';
 
 class ProcessController extends BaseController {
-  String get studentId => Get.arguments ?? 'คนรักษ์โลก';
+  String get studentId => Get.arguments ?? 'ผู้พิทักษ์โลก';
   RxInt point = 0.obs;
   Timer? timer;
   bool countdown = false;

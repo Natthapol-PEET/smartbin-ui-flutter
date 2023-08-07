@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/controllers/thanks_controller.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
-class ThanksScreen extends StatelessWidget {
+class ThanksScreen extends GetView<ThanksController> {
   const ThanksScreen({super.key});
 
   @override

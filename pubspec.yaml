@@ -18,6 +18,9 @@ dependencies:
   flutter_spinkit: ^5.2.0
   intl: ^0.18.1
   audioplayers: ^4.1.0
+  flutter_dotenv: ^5.0.2
+  video_player: ^2.7.0
+  webviewx: ^0.2.2
 
 dev_dependencies:
   flutter_test:
@@ -40,7 +43,12 @@ flutter:
     - assets/sounds/gun.mp3
 
     # video
+    - assets/videos/introduction-smartbin.mp4
     - assets/videos/smart-bin.mp4
+    - assets/videos/index.html
+
+    # env
+    - env/
 
 
   fonts:

@@ -80,6 +80,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "csslib",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/csslib-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.5",
       "packageUri": "lib/",
@@ -110,6 +116,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "flutter_dotenv",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/flutter_dotenv-5.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/flutter_lints-2.0.2",
       "packageUri": "lib/",
@@ -138,6 +150,12 @@
       "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/get-4.6.5",
       "packageUri": "lib/",
       "languageVersion": "2.15"
+    },
+    {
+      "name": "html",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/html-0.15.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "http",
@@ -242,6 +260,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "pointer_interceptor",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/pointer_interceptor-0.9.3+4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///Users/70007742/fvm/versions/3.10.5/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -308,10 +332,70 @@
       "languageVersion": "2.14"
     },
     {
+      "name": "video_player",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/video_player-2.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "video_player_android",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/video_player_android-2.4.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "video_player_avfoundation",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/video_player_avfoundation-2.4.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "video_player_platform_interface",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/video_player_platform_interface-6.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "video_player_web",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/video_player_web-2.0.16",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "web",
       "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/web-0.1.4-beta",
       "packageUri": "lib/",
       "languageVersion": "3.1"
+    },
+    {
+      "name": "webview_flutter",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/webview_flutter-2.8.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "webview_flutter_android",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/webview_flutter_android-2.10.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "webview_flutter_platform_interface",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/webview_flutter_platform_interface-1.9.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "webview_flutter_wkwebview",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-2.9.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "webviewx",
+      "rootUri": "file:///Users/70007742/.pub-cache/hosted/pub.dev/webviewx-0.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "win32",
@@ -332,7 +416,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-07-27T10:02:09.910493Z",
+  "generated": "2023-08-07T08:40:43.542853Z",
   "generator": "pub",
   "generatorVersion": "3.1.0-285.0.dev"
 }

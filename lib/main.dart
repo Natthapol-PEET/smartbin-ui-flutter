@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       initialBinding: RootBinding(),
-      initialRoute: RoutePath.home,
+      // initialRoute: RoutePath.home,
+      initialRoute: RoutePath.renderHtml,
       getPages: AppRout.router,
     );
   }

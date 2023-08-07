@@ -101,3 +101,8 @@ sudo systemctl status kiosk.service
 sudo systemctl stop kiosk.service
 
 sudo systemctl disable kiosk.service
+
+
+
+https://app.netlify.com/sites/delicate-chaja-4f6e1e/deploys/64d0da882be4dd66a9df54ac
+

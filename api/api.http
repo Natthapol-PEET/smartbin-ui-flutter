@@ -1,0 +1,12 @@
+@domain = http://127.0.0.1:4000
+@x-api-key = 1234
+
+POST {{domain}}/play_sound
+X-API-KEY: 1234
+Content-Type: application/json
+
+{
+    "command": "greeting"
+}
+
+###

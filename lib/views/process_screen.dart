@@ -22,18 +22,26 @@ class ProcessScreen extends GetView<ProcessController> {
                 Image.asset('assets/images/icons/KUSE-logo.png', height: 45),
                 Row(
                   children: [
-                    Image.asset('assets/images/icons/calendar.png', width: 32, height: 32),
+                    Image.asset('assets/images/icons/calendar.png',
+                        width: 32, height: 32),
                     const SizedBox(width: 5),
                     Obx(() => Text(
                           controller.displayDate.value,
-                          style: const TextStyle(fontFamily: 'kanit', fontSize: 20, fontWeight: FontWeight.w500),
+                          style: const TextStyle(
+                              fontFamily: 'kanit',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500),
                         )),
                     const SizedBox(width: 10),
-                    Image.asset('assets/images/icons/clock.png', width: 32, height: 32),
+                    Image.asset('assets/images/icons/clock.png',
+                        width: 32, height: 32),
                     const SizedBox(width: 5),
                     Obx(() => Text(
                           controller.displayTime.value,
-                          style: const TextStyle(fontFamily: 'kanit', fontSize: 20, fontWeight: FontWeight.w500),
+                          style: const TextStyle(
+                              fontFamily: 'kanit',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500),
                         )),
                   ],
                 ),
@@ -50,31 +58,39 @@ class ProcessScreen extends GetView<ProcessController> {
                     width: SCREEN_WIDTH / 2.2,
                     height: 220,
                     padding: const EdgeInsets.all(10),
-                    decoration:
-                        BoxDecoration(color: Colors.white.withOpacity(0.5), borderRadius: BorderRadius.circular(8)),
+                    decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.5),
+                        borderRadius: BorderRadius.circular(8)),
                     child: Column(
                       children: [
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset('assets/images/icons/user.png', width: 55),
+                            Image.asset('assets/images/icons/user.png',
+                                width: 55),
                             const SizedBox(width: 10),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text('สวัสดี คุณ',
-                                    style: TextStyle(fontFamily: 'kanit', fontSize: 18, fontWeight: FontWeight.w500)),
+                                    style: TextStyle(
+                                        fontFamily: 'kanit',
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500)),
                                 const SizedBox(height: 3),
                                 Container(
                                   width: 140,
                                   height: 30,
                                   decoration: BoxDecoration(
-                                      color: Colors.amber.shade300, borderRadius: BorderRadius.circular(10)),
+                                      color: Colors.amber.shade300,
+                                      borderRadius: BorderRadius.circular(10)),
                                   child: Center(
                                     child: Text(
                                       controller.studentId,
                                       style: const TextStyle(
-                                          fontFamily: 'kanit', fontSize: 18, fontWeight: FontWeight.w500),
+                                          fontFamily: 'kanit',
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ),
                                 ),
@@ -93,7 +109,8 @@ class ProcessScreen extends GetView<ProcessController> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Image.asset('assets/images/icons/relax.png', width: 55),
+                                    Image.asset('assets/images/icons/relax.png',
+                                        width: 55),
                                     const SizedBox(height: 10),
                                     const Text(
                                       'ถังขยะพร้อมทำงาน',
@@ -112,7 +129,8 @@ class ProcessScreen extends GetView<ProcessController> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    const SpinKitPouringHourGlassRefined(color: Colors.orange, size: 55),
+                                    const SpinKitPouringHourGlassRefined(
+                                        color: Colors.orange, size: 55),
                                     const SizedBox(height: 10),
                                     Obx(() => Text(
                                           'กำลังประมวลผล ${'. ' * controller.point.value}',
@@ -153,12 +171,19 @@ class ProcessScreen extends GetView<ProcessController> {
                     children: [
                       InkWell(
                         onTap: _showDialog,
-                        child: Image.asset('assets/images/buttons/exchange.png', width: 90),
+                        child: Image.asset('assets/images/buttons/exchange.png',
+                            width: 90),
                       ),
                       const SizedBox(width: 12),
                       InkWell(
-                        onTap: () => Get.offAllNamed(RoutePath.totalPoint),
-                        child: Image.asset('assets/images/buttons/look-score.png', width: 95),
+                        onTap: () => Get.offAllNamed(RoutePath.totalPoint,
+                            arguments: <String, dynamic>{
+                              'studentId': '6040202424',
+                              'point': 200,
+                            }),
+                        child: Image.asset(
+                            'assets/images/buttons/look-score.png',
+                            width: 95),
                       ),
                     ],
                   ),
@@ -167,7 +192,8 @@ class ProcessScreen extends GetView<ProcessController> {
               Container(
                 width: SCREEN_WIDTH / 2.5 + 1,
                 height: 260,
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                 decoration: BoxDecoration(
                   color: Colors.green.shade300.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(8),
@@ -261,8 +287,10 @@ class ProcessScreen extends GetView<ProcessController> {
                           itemSelectType(
                             type: 'พลาสติก',
                             image: 'assets/images/icons/coffee.png',
-                            iconColor: const Color.fromARGB(255, 64, 186, 243).withOpacity(0.8),
-                            bgColor: const Color.fromARGB(255, 64, 186, 243).withOpacity(0.1),
+                            iconColor: const Color.fromARGB(255, 64, 186, 243)
+                                .withOpacity(0.8),
+                            bgColor: const Color.fromARGB(255, 64, 186, 243)
+                                .withOpacity(0.1),
                             selectColor: Colors.blue,
                           ),
                           itemSelectType(
@@ -352,7 +380,9 @@ class ProcessScreen extends GetView<ProcessController> {
             decoration: BoxDecoration(
               color: bgColor,
               borderRadius: BorderRadius.circular(8),
-              border: controller.selectType.value == type ? Border.all(color: selectColor, width: 2) : null,
+              border: controller.selectType.value == type
+                  ? Border.all(color: selectColor, width: 2)
+                  : null,
             ),
             child: Column(
               children: [

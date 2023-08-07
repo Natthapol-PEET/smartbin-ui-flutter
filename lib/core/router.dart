@@ -3,18 +3,23 @@ import 'package:smartbin_ui_flutter/bindings/enter_id_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/home_screen.dart';
 import 'package:smartbin_ui_flutter/bindings/process_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/qrcode_survey_binding.dart';
+import 'package:smartbin_ui_flutter/bindings/render_html_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/scan_qrcode_binding.dart';
+import 'package:smartbin_ui_flutter/bindings/thanks_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/total_point_binding.dart';
+import 'package:smartbin_ui_flutter/bindings/video_binding.dart';
 import 'package:smartbin_ui_flutter/views/home_screen.dart';
 import 'package:smartbin_ui_flutter/views/how_to_screen.dart';
 import 'package:smartbin_ui_flutter/views/process_screen.dart';
 import 'package:smartbin_ui_flutter/views/qrcode_id_screen.dart';
 import 'package:smartbin_ui_flutter/views/qrcode_survey_screen.dart';
+import 'package:smartbin_ui_flutter/views/render_html_screen.dart';
 import 'package:smartbin_ui_flutter/views/saving_donate_screen.dart';
 import 'package:smartbin_ui_flutter/views/enter_id_screen.dart';
 import 'package:smartbin_ui_flutter/views/scan_qrcode_screen.dart';
 import 'package:smartbin_ui_flutter/views/thanks_screen.dart';
 import 'package:smartbin_ui_flutter/views/total_point_screen.dart';
+import 'package:smartbin_ui_flutter/views/video_screen.dart';
 
 class RoutePath {
   static String home = '/home_screen';
@@ -28,10 +33,16 @@ class RoutePath {
   static String totalPoint = '/total_point_screen';
   static String survey = '/survey_screen';
   static String thanks = '/thanks_screen';
+  static String renderHtml = '/render_html_screen';
 }
 
 class AppRout {
   static List<GetPage<dynamic>> router = [
+    GetPage(
+      name: RoutePath.video,
+      page: () => const VideoScreen(),
+      binding: VideoBinding(),
+    ),
     GetPage(
       name: RoutePath.home,
       page: () => const HomeScreen(),
@@ -77,6 +88,12 @@ class AppRout {
     GetPage(
       name: RoutePath.thanks,
       page: () => const ThanksScreen(),
+      binding: ThanksBinding(),
+    ),
+    GetPage(
+      name: RoutePath.renderHtml,
+      page: () => const RenderHtmlScreen(),
+      binding: RenderHtmlBinding(),
     ),
   ];
 }
