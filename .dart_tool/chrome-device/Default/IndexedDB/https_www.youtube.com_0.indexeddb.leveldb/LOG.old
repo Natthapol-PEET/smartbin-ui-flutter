@@ -1,7 +1,15 @@
-2023/07/28-23:14:54.942 6907 Reusing MANIFEST /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.m2XNaG/flutter_tools_chrome_device.ye0pxn/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
-2023/07/28-23:14:54.943 6907 Recovering log #3
-2023/07/28-23:14:54.944 6907 Reusing old log /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.m2XNaG/flutter_tools_chrome_device.ye0pxn/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000003.log 
-2023/07/28-23:15:03.621 9303 Level-0 table #5: started
-2023/07/28-23:15:03.640 9303 Level-0 table #5: 48142 bytes OK
-2023/07/28-23:15:03.680 9303 Delete type=0 #3
-2023/07/28-23:15:03.681 9303 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2023/08/19-00:38:09.918 9707 Reusing MANIFEST /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.nAz7Xr/flutter_tools_chrome_device.R3xBrA/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/08/19-00:38:09.918 9707 Recovering log #4
+2023/08/19-00:38:09.919 9707 Reusing old log /private/var/folders/dq/g241zvjd3yv9mkf6ds2mg6k9pxw8h7/T/flutter_tools.nAz7Xr/flutter_tools_chrome_device.R3xBrA/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000004.log 
+2023/08/19-00:50:28.214 9303 Level-0 table #8: started
+2023/08/19-00:50:28.235 9303 Level-0 table #8: 57945 bytes OK
+2023/08/19-00:50:28.276 9303 Delete type=0 #4
+2023/08/19-00:50:28.277 9303 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2023/08/19-00:50:28.278 9303 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x02\x01\x1f\x04\x03\x01\x06\x00Q\x00U\x00E\x00U\x00E\x00D\x03\x00\x00\x00\x00\x00\x00L@\x03\x00`\x1b\x83\xd4\x99xB\x00\x03\x00\x00\x00\x00\x00\x00(@' @ 567 : 1
+2023/08/19-00:50:28.278 9303 Compacting 1@1 + 1@2 files
+2023/08/19-00:50:28.298 9303 Generated table #9@1: 67 keys, 1549 bytes
+2023/08/19-00:50:28.298 9303 Compacted 1@1 + 1@2 files => 1549 bytes
+2023/08/19-00:50:28.336 9303 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/08/19-00:50:28.337 9303 Delete type=2 #5
+2023/08/19-00:50:28.337 9303 Delete type=2 #8
+2023/08/19-00:50:28.337 9303 Manual compaction at level-1 from '\x00\x02\x01\x1f\x04\x03\x01\x06\x00Q\x00U\x00E\x00U\x00E\x00D\x03\x00\x00\x00\x00\x00\x00L@\x03\x00`\x1b\x83\xd4\x99xB\x00\x03\x00\x00\x00\x00\x00\x00(@' @ 567 : 1 .. (end); will stop at (end)

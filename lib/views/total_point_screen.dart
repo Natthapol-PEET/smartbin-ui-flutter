@@ -35,19 +35,22 @@ class TotalPointScreen extends GetView<TotalPointController> {
                 ),
                 const SizedBox(height: 6),
                 Image.asset('assets/images/icons/user.png', width: 55),
-                Container(
-                  width: 140,
-                  height: 30,
-                  decoration: BoxDecoration(
-                      color: Colors.amber.shade300,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: Text(
-                      controller.studentId,
-                      style: const TextStyle(
-                          fontFamily: 'kanit',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500),
+                FittedBox(
+                  child: Container(
+                    // width: 140,
+                    height: 30,
+                    padding: const EdgeInsets.symmetric(horizontal: 18),
+                    decoration: BoxDecoration(
+                        color: Colors.amber.shade300,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: Text(
+                        controller.studentId,
+                        style: const TextStyle(
+                            fontFamily: 'kanit',
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
                   ),
                 ),

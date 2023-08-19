@@ -53,7 +53,10 @@ class SavingDonateScreen extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () => Get.offAllNamed(RoutePath.process),
+              onTap: () => Get.offAllNamed(RoutePath.process, arguments: {
+                'display': 'ผู้พิทักษ์โลก',
+                'token': null,
+              }),
               child: Column(
                 children: [
                   Material(
@@ -93,7 +96,8 @@ class SavingDonateScreen extends StatelessWidget {
         const SizedBox(height: 25),
         InkWell(
           onTap: () => Get.back(),
-          child: Image.asset('assets/images/buttons/howto-back.png', height: 45),
+          child:
+              Image.asset('assets/images/buttons/howto-back.png', height: 45),
         ),
       ],
     ));

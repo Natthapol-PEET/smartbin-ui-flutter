@@ -3,7 +3,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:smartbin_ui_flutter/controllers/process_controller.dart';
 import 'package:smartbin_ui_flutter/core/const.dart';
-import 'package:smartbin_ui_flutter/core/router.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
 class ProcessScreen extends GetView<ProcessController> {
@@ -79,17 +78,19 @@ class ProcessScreen extends GetView<ProcessController> {
                                         fontWeight: FontWeight.w500)),
                                 const SizedBox(height: 3),
                                 Container(
-                                  width: 140,
+                                  // width: 140,
                                   height: 30,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 18),
                                   decoration: BoxDecoration(
                                       color: Colors.amber.shade300,
                                       borderRadius: BorderRadius.circular(10)),
                                   child: Center(
                                     child: Text(
-                                      controller.studentId,
+                                      controller.display,
                                       style: const TextStyle(
                                           fontFamily: 'kanit',
-                                          fontSize: 18,
+                                          fontSize: 16,
                                           fontWeight: FontWeight.w500),
                                     ),
                                   ),
@@ -169,22 +170,22 @@ class ProcessScreen extends GetView<ProcessController> {
                   const SizedBox(height: 12),
                   Row(
                     children: [
-                      InkWell(
-                        onTap: _showDialog,
-                        child: Image.asset('assets/images/buttons/exchange.png',
-                            width: 90),
-                      ),
+                      Obx(() => InkWell(
+                            onTap:
+                                controller.isReady.isTrue ? _showDialog : null,
+                            child: Image.asset(
+                                'assets/images/buttons/exchange.png',
+                                width: 90),
+                          )),
                       const SizedBox(width: 12),
-                      InkWell(
-                        onTap: () => Get.offAllNamed(RoutePath.totalPoint,
-                            arguments: <String, dynamic>{
-                              'studentId': '6040202424',
-                              'point': 200,
-                            }),
-                        child: Image.asset(
-                            'assets/images/buttons/look-score.png',
-                            width: 95),
-                      ),
+                      Obx(() => InkWell(
+                            onTap: controller.isReady.isTrue
+                                ? controller.gotoTotalScore
+                                : null,
+                            child: Image.asset(
+                                'assets/images/buttons/look-score.png',
+                                width: 95),
+                          )),
                     ],
                   ),
                 ],
@@ -202,14 +203,14 @@ class ProcessScreen extends GetView<ProcessController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     slotType(
-                      type: 'ขวดแก้ว',
+                      type: 'พลาสติกขุ่น',
                       color: const Color(0xFF77AE54),
                       image: 'assets/images/icons/wine.png',
-                      score: controller.wine,
-                      percen: controller.wineWidth,
+                      score: controller.pet,
+                      percen: controller.petWidth,
                     ),
                     slotType(
-                      type: 'พลาสติก',
+                      type: 'พลาสติกใส',
                       color: const Color.fromARGB(255, 64, 186, 243),
                       image: 'assets/images/icons/plastic.png',
                       score: controller.plastic,
@@ -278,14 +279,14 @@ class ProcessScreen extends GetView<ProcessController> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           itemSelectType(
-                            type: 'ขวดแก้ว',
+                            type: 'พลาสติกขุ่น',
                             image: 'assets/images/icons/wine.png',
                             iconColor: const Color(0xFF77AE54).withOpacity(0.8),
                             bgColor: const Color(0xFF77AE54).withOpacity(0.1),
                             selectColor: Colors.green,
                           ),
                           itemSelectType(
-                            type: 'พลาสติก',
+                            type: 'พลาสติกใส',
                             image: 'assets/images/icons/coffee.png',
                             iconColor: const Color.fromARGB(255, 64, 186, 243)
                                 .withOpacity(0.8),
@@ -338,7 +339,10 @@ class ProcessScreen extends GetView<ProcessController> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () => Get.back(),
+                  onTap: () {
+                    controller.selectType = ''.obs;
+                    Get.back();
+                  },
                   child: Image.asset(
                     'assets/images/buttons/back-short.png',
                     height: 35,
@@ -437,7 +441,7 @@ class ProcessScreen extends GetView<ProcessController> {
           Row(
             children: [
               SizedBox(
-                width: 60,
+                width: 65,
                 child: Column(
                   children: [
                     Container(
@@ -462,7 +466,7 @@ class ProcessScreen extends GetView<ProcessController> {
                   ],
                 ),
               ),
-              const SizedBox(width: 10),
+              const SizedBox(width: 5),
               Stack(
                 children: [
                   Obx(() => AnimatedContainer(

@@ -1,10 +1,23 @@
 import 'dart:async';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:smartbin_ui_flutter/apis/smartbin_api.dart';
 import 'package:smartbin_ui_flutter/core/controller_base.dart';
+import 'package:smartbin_ui_flutter/core/router.dart';
+import 'package:smartbin_ui_flutter/models/access_token_model.dart';
+import 'package:smartbin_ui_flutter/models/data_type_model.dart';
+import 'package:smartbin_ui_flutter/models/prediction_type.dart';
+import 'package:smartbin_ui_flutter/widgets/dialog.dart';
 
 class ProcessController extends BaseController {
-  String get studentId => Get.arguments ?? 'ผู้พิทักษ์โลก';
+  SmartBinApi api = Get.find<SmartBinApi>();
+
+  late DataTypeModel dataTypeModel;
+
+  get arg => Get.arguments;
+  AccessTokenModel? accessModel;
+  String display = 'ผู้พิทักษ์โลก';
+
   RxInt point = 0.obs;
   Timer? timer;
   bool countdown = false;
@@ -16,12 +29,13 @@ class ProcessController extends BaseController {
   double max = 110;
   RxDouble canWidth = 0.0.obs;
   RxDouble plasticWidth = 0.0.obs;
-  RxDouble wineWidth = 0.0.obs;
+  RxDouble petWidth = 0.0.obs;
   RxDouble get totalWidth => (max * 1.0).obs;
 
   RxInt can = 0.obs;
   RxInt plastic = 0.obs;
-  RxInt wine = 0.obs;
+  RxInt pet = 0.obs;
+  RxInt trash = 0.obs;
   RxInt total = 0.obs;
 
   RxString displayDate = '07-07-2561'.obs;
@@ -36,6 +50,13 @@ class ProcessController extends BaseController {
   void onInit() {
     super.onInit();
 
+    try {
+      display = arg['display'];
+      accessModel = arg['token'];
+    } catch (e) {}
+
+    getDataType();
+
     initDisplayDateTime();
     displayDateTimer = Timer.periodic(const Duration(seconds: 60), (timer) {
       initDisplayDateTime();
@@ -49,6 +70,26 @@ class ProcessController extends BaseController {
         countdownTimer?.cancel();
       }
     });
+  }
+
+  Future<void> getDataType() async {
+    try {
+      Response resp = await api.getDataType();
+
+      if (resp.isOk) {
+        dataTypeModel = DataTypeModel.fromJson(resp.body);
+      } else {
+        SmartBinDialog.showWarning(
+          desc: 'ระบบมีปัญหา กรุณาลองใหม่ภายหลัง',
+          onOk: () => Get.offAllNamed(RoutePath.home),
+        );
+      }
+    } catch (e) {
+      SmartBinDialog.showError(
+        desc: 'ระบบมีปัญหา กรุณาลองใหม่ภายหลัง',
+        onOk: () => Get.offAllNamed(RoutePath.home),
+      );
+    }
   }
 
   void initDisplayDateTime() {
@@ -77,46 +118,156 @@ class ProcessController extends BaseController {
       } else {
         point++;
 
-        // wine.value += 3;
+        // pet.value += 3;
         // plastic.value += 1;
         // can.value += 2;
       }
     });
   }
 
-  void exchange() {
-    // processing
-    isReady(false);
-
+  void userSelectTypeProcess() {
     Timer(const Duration(seconds: 3), () {
       switch (selectType.value) {
-        case 'ขวดแก้ว':
-          wine.value += 1;
+        case 'พลาสติกขุ่น':
+          userSelectType(type: 'pet');
+          // pet.value += 1;
           break;
-        case 'พลาสติก':
-          plastic.value += 1;
+        case 'พลาสติกใส':
+          userSelectType(type: 'plastic');
+          // plastic.value += 1;
           break;
         case 'กระป๋อง':
-          can += 1;
+          userSelectType(type: 'can');
+          // can += 1;
           break;
         default:
+          userSelectType(type: 'trash');
+          // trash += 1;
           break;
       }
 
-      if (wine.value + plastic.value + can.value > 0) {
-        calPercen();
-      }
+      // if (pet.value + plastic.value + can.value + trash.value > 0) {
+      //   calPercen();
+      // }
 
-      selectType.value == '';
-      isReady(true);
+      // selectType = ''.obs;
+      // isReady(true);
     });
   }
 
-  void calPercen() {
-    total.value = wine.value + plastic.value + can.value;
+  void exchange() async {
+    // processing
+    isReady(false);
+
+    userSelectTypeProcess();
+    await prediction();
+  }
+
+  Future<void> prediction() async {
+    String endpoint = 'prediction_donate';
+
+    if (accessModel?.accessToken != null) {
+      endpoint = 'prediction_login';
+    }
+
+    try {
+      Response resp = await api.prediction(endpoint, <String, String>{
+        "image_path": "assets/images/plastic.jpg",
+        "access_token": accessModel?.accessToken ?? "",
+      });
+
+      if (resp.isOk) {
+        PredictType data = PredictType.fromJson(resp.body);
+        countTypeById(data.id as int);
+      } else {
+        SmartBinDialog.showWarning(
+          desc: 'ระบบมีปัญหา กรุณาลองใหม่ภายหลัง',
+          onOk: () => Get.offAllNamed(RoutePath.home),
+        );
+      }
+    } catch (e) {
+      SmartBinDialog.showError(
+        desc: 'ระบบมีปัญหา กรุณาลองใหม่ภายหลัง',
+        onOk: () => Get.offAllNamed(RoutePath.home),
+      );
+    }
+  }
+
+  void countTypeById(int id) {
+    String type = '';
+
+    dataTypeModel.data?.forEach((elem) {
+      if (id == elem.id) {
+        type = elem.name ?? '';
+      }
+    });
+
+    switch (type) {
+      case 'pet':
+        pet.value += 1;
+        break;
+      case 'plastic':
+        plastic.value += 1;
+        break;
+      case 'can':
+        can += 1;
+        break;
+      case 'trash':
+        trash += 1;
+        break;
+    }
+
+    if (pet.value + plastic.value + can.value + trash.value > 0) {
+      calPercent();
+    }
+
+    selectType = ''.obs;
+    isReady(true);
+  }
+
+  Future<void> userSelectType({required String type}) async {
+    try {
+      Response resp = await api.userSelectType(<String, String>{
+        "user": display,
+        "type": type,
+        "datetime": DateTime.now().toString(),
+      });
+
+      print('userSelectType :: ${resp.statusCode}');
+    } catch (e) {}
+  }
+
+  void calPercent() {
+    total.value = pet.value + plastic.value + can.value + trash.value;
     canWidth.value = (can.value / total.value) * max;
     plasticWidth.value = (plastic.value / total.value) * max;
-    wineWidth.value = (wine.value / total.value) * max;
+    petWidth.value = (pet.value / total.value) * max;
+  }
+
+  void gotoTotalScore() {
+    int total = 0;
+
+    dataTypeModel.data?.forEach((elem) {
+      switch (elem.name ?? '') {
+        case 'pet':
+          total += pet.value * (elem.points as int);
+          break;
+        case 'plastic':
+          total += plastic.value * (elem.points as int);
+          break;
+        case 'can':
+          total += can.value * (elem.points as int);
+          break;
+        case 'trash':
+          total += trash.value * (elem.points as int);
+          break;
+      }
+    });
+
+    Get.offAllNamed(RoutePath.totalPoint, arguments: <String, dynamic>{
+      'display': display,
+      'point': total,
+    });
   }
 
   @override

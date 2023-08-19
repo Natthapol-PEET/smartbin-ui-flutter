@@ -28,14 +28,14 @@ class HomeScreen extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Obx(() => TrashTypeCircle(
-                    type: 'ขวดแก้ว',
-                    progress: controller.wine.value,
+                    type: 'พลาสติกขุ่น',
+                    progress: controller.pet.value,
                     color: const Color(0xFF77AE54),
                     image: 'assets/images/icons/wine.png',
                   )),
               Obx(() => TrashTypeCircle(
-                    type: 'พลาสติก',
-                    progress: controller.platstic.value,
+                    type: 'พลาสติกใส',
+                    progress: controller.plastic.value,
                     color: const Color.fromARGB(255, 64, 186, 243),
                     image: 'assets/images/icons/plastic.png',
                   )),

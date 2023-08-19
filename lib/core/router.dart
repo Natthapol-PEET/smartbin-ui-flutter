@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:smartbin_ui_flutter/bindings/enter_id_binding.dart';
-import 'package:smartbin_ui_flutter/bindings/home_screen.dart';
+import 'package:smartbin_ui_flutter/bindings/home_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/process_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/qrcode_survey_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/render_html_binding.dart';
