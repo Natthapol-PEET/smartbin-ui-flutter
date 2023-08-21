@@ -8,6 +8,7 @@ import 'package:smartbin_ui_flutter/bindings/scan_qrcode_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/thanks_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/total_point_binding.dart';
 import 'package:smartbin_ui_flutter/bindings/video_binding.dart';
+import 'package:smartbin_ui_flutter/views/full_screen.dart';
 import 'package:smartbin_ui_flutter/views/home_screen.dart';
 import 'package:smartbin_ui_flutter/views/how_to_screen.dart';
 import 'package:smartbin_ui_flutter/views/process_screen.dart';
@@ -34,6 +35,7 @@ class RoutePath {
   static String survey = '/survey_screen';
   static String thanks = '/thanks_screen';
   static String renderHtml = '/render_html_screen';
+  static String fullBin = '/full_bin_screen';
 }
 
 class AppRout {
@@ -94,6 +96,10 @@ class AppRout {
       name: RoutePath.renderHtml,
       page: () => const RenderHtmlScreen(),
       binding: RenderHtmlBinding(),
+    ),
+    GetPage(
+      name: RoutePath.fullBin,
+      page: () => const FullBinScreen(),
     ),
   ];
 }

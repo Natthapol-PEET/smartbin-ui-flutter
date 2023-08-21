@@ -38,8 +38,7 @@ class ScanQRCodeController extends BaseController {
   }
 
   Future<void> clearCache() async {
-    await CachedNetworkImage.evictFromCache(
-        'http://localhost:8080/api/v1/smartbin/login_qrcode');
+    await CachedNetworkImage.evictFromCache('http://localhost:8080/api/v1/smartbin/login_qrcode');
   }
 
   Future<void> getQrCodeLogin() async {

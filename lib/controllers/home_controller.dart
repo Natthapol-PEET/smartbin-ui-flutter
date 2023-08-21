@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:smartbin_ui_flutter/apis/smartbin_api.dart';
 import 'package:smartbin_ui_flutter/core/controller_base.dart';
 import 'package:smartbin_ui_flutter/models/waste_model.dart';
+import 'package:smartbin_ui_flutter/widgets/dialog.dart';
 
 class HomeController extends BaseController {
   SmartBinApi api = Get.find<SmartBinApi>();
@@ -21,13 +22,15 @@ class HomeController extends BaseController {
       Response resp = await api.getAmountWaste();
 
       if (resp.isOk) {
-        WasteModel data = WasteModel.fromJson(resp.body);
-        can.value = data.can as double;
-        pet.value = data.pet as double;
-        plastic.value = data.plastic as double;
+        WasteModel model = WasteModel.fromJson(resp.body);
+        can.value = model.data?.can as double;
+        pet.value = model.data?.pet as double;
+        plastic.value = model.data?.plastic as double;
+      } else {
+        SmartBinDialog.showWarning(desc: 'ไม่สามารถดึงข้อมูลความจุขยะปัจจุบันได้', onOk: () {});
       }
     } catch (e) {
-      print(e);
+      SmartBinDialog.showWarning(desc: 'ไม่สามารถดึงข้อมูลความจุขยะปัจจุบันได้', onOk: () {});
     }
   }
 }

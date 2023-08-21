@@ -53,6 +53,11 @@ task_push(){
   git push
 }
 
+help__buildWeb="flutter build web"
+task_buildWeb(){
+  fvm flutter build web --release
+}
+
 ## main
 list_all_helps() {
   compgen -v | egrep "^help__.*"

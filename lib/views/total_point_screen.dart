@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/apis/smartbin_api.dart';
 import 'package:smartbin_ui_flutter/controllers/total_point_controller.dart';
 import 'package:smartbin_ui_flutter/core/const.dart';
 import 'package:smartbin_ui_flutter/core/router.dart';
@@ -40,16 +41,11 @@ class TotalPointScreen extends GetView<TotalPointController> {
                     // width: 140,
                     height: 30,
                     padding: const EdgeInsets.symmetric(horizontal: 18),
-                    decoration: BoxDecoration(
-                        color: Colors.amber.shade300,
-                        borderRadius: BorderRadius.circular(10)),
+                    decoration: BoxDecoration(color: Colors.amber.shade300, borderRadius: BorderRadius.circular(10)),
                     child: Center(
                       child: Text(
                         controller.studentId,
-                        style: const TextStyle(
-                            fontFamily: 'kanit',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500),
+                        style: const TextStyle(fontFamily: 'kanit', fontSize: 16, fontWeight: FontWeight.w500),
                       ),
                     ),
                   ),
@@ -69,10 +65,7 @@ class TotalPointScreen extends GetView<TotalPointController> {
                   child: Center(
                     child: Text(
                       '${controller.point}  Point',
-                      style: const TextStyle(
-                          fontFamily: 'kanit',
-                          fontSize: 22,
-                          fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontFamily: 'kanit', fontSize: 22, fontWeight: FontWeight.w500),
                     ),
                   ),
                 ),
@@ -81,7 +74,10 @@ class TotalPointScreen extends GetView<TotalPointController> {
           ),
           const SizedBox(height: 16),
           InkWell(
-            onTap: () => Get.offAllNamed(RoutePath.survey),
+            onTap: () {
+              Get.find<SmartBinApi>().playSound(command: 'all.enter');
+              Get.offAllNamed(RoutePath.survey);
+            },
             child: Image.asset(
               'assets/images/buttons/submit.png',
               height: 45,

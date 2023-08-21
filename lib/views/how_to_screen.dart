@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/apis/smartbin_api.dart';
 import 'package:smartbin_ui_flutter/core/const.dart';
 
 class HowToScreen extends StatelessWidget {
@@ -23,7 +24,10 @@ class HowToScreen extends StatelessWidget {
               left: SCREEN_WIDTH / 2 - 45,
               bottom: 30,
               child: InkWell(
-                onTap: () => Get.back(),
+                onTap: () {
+                  Get.find<SmartBinApi>().playSound(command: 'all.back');
+                  Get.back();
+                },
                 child: Image.asset('assets/images/buttons/howto-back.png', height: 45),
               ),
             ),

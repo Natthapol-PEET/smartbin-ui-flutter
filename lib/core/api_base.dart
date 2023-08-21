@@ -15,7 +15,7 @@ class BaseApi extends GetConnect {
     httpClient.baseUrl = endpoint;
 
     httpClient.addRequestModifier((Request request) {
-      request.headers['authorization'] = 'Bearer $keyApp';
+      request.headers['authorization'] = "Bearer $keyApp";
       request.headers['Content-Type'] = "application/json";
       return request;
     });

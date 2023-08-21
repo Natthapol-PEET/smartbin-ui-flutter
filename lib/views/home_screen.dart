@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/apis/smartbin_api.dart';
 import 'package:smartbin_ui_flutter/controllers/home_controller.dart';
 import 'package:smartbin_ui_flutter/core/router.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
@@ -51,12 +52,18 @@ class HomeScreen extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                onTap: () => Get.toNamed(RoutePath.savingDonate),
+                onTap: () {
+                  Get.find<SmartBinApi>().playSound(command: 'main.exchange');
+                  Get.toNamed(RoutePath.savingDonate);
+                },
                 child: Image.asset('assets/images/buttons/exchange.png', height: 50),
               ),
               const SizedBox(width: 50),
               InkWell(
-                onTap: () => Get.toNamed(RoutePath.howto),
+                onTap: () {
+                  Get.find<SmartBinApi>().playSound(command: 'main.howto');
+                  Get.toNamed(RoutePath.howto);
+                },
                 child: Image.asset('assets/images/buttons/howto.png', height: 50),
               ),
             ],

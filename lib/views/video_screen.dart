@@ -14,8 +14,7 @@ class VideoScreen extends GetView<VideoController> {
         builder: (_) {
           print(controller.videoController?.value.isInitialized);
           return IndexedStack(
-            index:
-                controller.videoController?.value.isInitialized == true ? 0 : 1,
+            index: controller.videoController?.value.isInitialized == true ? 0 : 1,
             children: [
               AspectRatio(
                 aspectRatio: controller.videoController?.value.aspectRatio ?? 0,

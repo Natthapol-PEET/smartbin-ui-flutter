@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/apis/smartbin_api.dart';
 import 'package:smartbin_ui_flutter/controllers/enter_id_controller.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
@@ -53,12 +54,18 @@ class EnterIDScreen extends GetView<EnterIDController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InkWell(
-                      onTap: () => Get.back(),
+                      onTap: () {
+                        Get.find<SmartBinApi>().playSound(command: 'all.back');
+                        Get.back();
+                      },
                       child: Image.asset('assets/images/buttons/back-short.png', height: 45),
                     ),
                     const SizedBox(width: 15),
                     InkWell(
-                      onTap: controller.gotoProcess,
+                      onTap: () {
+                        Get.find<SmartBinApi>().playSound(command: 'all.enter');
+                        controller.gotoProcess();
+                      },
                       child: Image.asset('assets/images/buttons/submit.png', height: 45),
                     ),
                   ],

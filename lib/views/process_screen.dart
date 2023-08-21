@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/apis/smartbin_api.dart';
 import 'package:smartbin_ui_flutter/controllers/process_controller.dart';
 import 'package:smartbin_ui_flutter/core/const.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
@@ -21,26 +22,18 @@ class ProcessScreen extends GetView<ProcessController> {
                 Image.asset('assets/images/icons/KUSE-logo.png', height: 45),
                 Row(
                   children: [
-                    Image.asset('assets/images/icons/calendar.png',
-                        width: 32, height: 32),
+                    Image.asset('assets/images/icons/calendar.png', width: 32, height: 32),
                     const SizedBox(width: 5),
                     Obx(() => Text(
                           controller.displayDate.value,
-                          style: const TextStyle(
-                              fontFamily: 'kanit',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500),
+                          style: const TextStyle(fontFamily: 'kanit', fontSize: 20, fontWeight: FontWeight.w500),
                         )),
                     const SizedBox(width: 10),
-                    Image.asset('assets/images/icons/clock.png',
-                        width: 32, height: 32),
+                    Image.asset('assets/images/icons/clock.png', width: 32, height: 32),
                     const SizedBox(width: 5),
                     Obx(() => Text(
                           controller.displayTime.value,
-                          style: const TextStyle(
-                              fontFamily: 'kanit',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500),
+                          style: const TextStyle(fontFamily: 'kanit', fontSize: 20, fontWeight: FontWeight.w500),
                         )),
                   ],
                 ),
@@ -57,41 +50,32 @@ class ProcessScreen extends GetView<ProcessController> {
                     width: SCREEN_WIDTH / 2.2,
                     height: 220,
                     padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(8)),
+                    decoration:
+                        BoxDecoration(color: Colors.white.withOpacity(0.5), borderRadius: BorderRadius.circular(8)),
                     child: Column(
                       children: [
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset('assets/images/icons/user.png',
-                                width: 55),
+                            Image.asset('assets/images/icons/user.png', width: 55),
                             const SizedBox(width: 10),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const Text('สวัสดี คุณ',
-                                    style: TextStyle(
-                                        fontFamily: 'kanit',
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500)),
+                                    style: TextStyle(fontFamily: 'kanit', fontSize: 18, fontWeight: FontWeight.w500)),
                                 const SizedBox(height: 3),
                                 Container(
                                   // width: 140,
                                   height: 30,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 18),
+                                  padding: const EdgeInsets.symmetric(horizontal: 18),
                                   decoration: BoxDecoration(
-                                      color: Colors.amber.shade300,
-                                      borderRadius: BorderRadius.circular(10)),
+                                      color: Colors.amber.shade300, borderRadius: BorderRadius.circular(10)),
                                   child: Center(
                                     child: Text(
                                       controller.display,
                                       style: const TextStyle(
-                                          fontFamily: 'kanit',
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500),
+                                          fontFamily: 'kanit', fontSize: 16, fontWeight: FontWeight.w500),
                                     ),
                                   ),
                                 ),
@@ -110,8 +94,7 @@ class ProcessScreen extends GetView<ProcessController> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Image.asset('assets/images/icons/relax.png',
-                                        width: 55),
+                                    Image.asset('assets/images/icons/relax.png', width: 55),
                                     const SizedBox(height: 10),
                                     const Text(
                                       'ถังขยะพร้อมทำงาน',
@@ -130,8 +113,7 @@ class ProcessScreen extends GetView<ProcessController> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    const SpinKitPouringHourGlassRefined(
-                                        color: Colors.orange, size: 55),
+                                    const SpinKitPouringHourGlassRefined(color: Colors.orange, size: 55),
                                     const SizedBox(height: 10),
                                     Obx(() => Text(
                                           'กำลังประมวลผล ${'. ' * controller.point.value}',
@@ -171,20 +153,23 @@ class ProcessScreen extends GetView<ProcessController> {
                   Row(
                     children: [
                       Obx(() => InkWell(
-                            onTap:
-                                controller.isReady.isTrue ? _showDialog : null,
-                            child: Image.asset(
-                                'assets/images/buttons/exchange.png',
-                                width: 90),
+                            onTap: controller.isReady.isTrue
+                                ? () {
+                                    Get.find<SmartBinApi>().playSound(command: 'main.exchange');
+                                    _showDialog();
+                                  }
+                                : null,
+                            child: Image.asset('assets/images/buttons/exchange.png', width: 90),
                           )),
                       const SizedBox(width: 12),
                       Obx(() => InkWell(
                             onTap: controller.isReady.isTrue
-                                ? controller.gotoTotalScore
+                                ? () {
+                                    Get.find<SmartBinApi>().playSound(command: 'all.lookscore');
+                                    controller.gotoTotalScore();
+                                  }
                                 : null,
-                            child: Image.asset(
-                                'assets/images/buttons/look-score.png',
-                                width: 95),
+                            child: Image.asset('assets/images/buttons/look-score.png', width: 95),
                           )),
                     ],
                   ),
@@ -193,8 +178,7 @@ class ProcessScreen extends GetView<ProcessController> {
               Container(
                 width: SCREEN_WIDTH / 2.5 + 1,
                 height: 260,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                 decoration: BoxDecoration(
                   color: Colors.green.shade300.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(8),
@@ -288,10 +272,8 @@ class ProcessScreen extends GetView<ProcessController> {
                           itemSelectType(
                             type: 'พลาสติกใส',
                             image: 'assets/images/icons/coffee.png',
-                            iconColor: const Color.fromARGB(255, 64, 186, 243)
-                                .withOpacity(0.8),
-                            bgColor: const Color.fromARGB(255, 64, 186, 243)
-                                .withOpacity(0.1),
+                            iconColor: const Color.fromARGB(255, 64, 186, 243).withOpacity(0.8),
+                            bgColor: const Color.fromARGB(255, 64, 186, 243).withOpacity(0.1),
                             selectColor: Colors.blue,
                           ),
                           itemSelectType(
@@ -340,6 +322,7 @@ class ProcessScreen extends GetView<ProcessController> {
               children: [
                 InkWell(
                   onTap: () {
+                    Get.find<SmartBinApi>().playSound(command: 'all.back');
                     controller.selectType = ''.obs;
                     Get.back();
                   },
@@ -350,17 +333,20 @@ class ProcessScreen extends GetView<ProcessController> {
                   ),
                 ),
                 const SizedBox(width: 14),
-                InkWell(
-                  onTap: () {
-                    Get.back();
-                    controller.exchange();
-                  },
-                  child: Image.asset(
-                    'assets/images/buttons/submit.png',
-                    height: 35,
-                    fit: BoxFit.fitHeight,
-                  ),
-                ),
+                Obx(() => InkWell(
+                      onTap: controller.selectType.value == ''
+                          ? null
+                          : () {
+                              Get.find<SmartBinApi>().playSound(command: 'all.process');
+                              Get.back();
+                              controller.exchange();
+                            },
+                      child: Image.asset(
+                        'assets/images/buttons/submit.png',
+                        height: 35,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    )),
               ],
             ),
           ],
@@ -384,9 +370,7 @@ class ProcessScreen extends GetView<ProcessController> {
             decoration: BoxDecoration(
               color: bgColor,
               borderRadius: BorderRadius.circular(8),
-              border: controller.selectType.value == type
-                  ? Border.all(color: selectColor, width: 2)
-                  : null,
+              border: controller.selectType.value == type ? Border.all(color: selectColor, width: 2) : null,
             ),
             child: Column(
               children: [

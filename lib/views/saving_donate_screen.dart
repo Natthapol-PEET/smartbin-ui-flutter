@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/apis/smartbin_api.dart';
 import 'package:smartbin_ui_flutter/core/router.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
@@ -27,7 +28,10 @@ class SavingDonateScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             InkWell(
-              onTap: () => Get.toNamed(RoutePath.qrcodeId),
+              onTap: () {
+                Get.find<SmartBinApi>().playSound(command: 'list.collect');
+                Get.toNamed(RoutePath.qrcodeId);
+              },
               child: Column(
                 children: [
                   Material(
@@ -53,10 +57,13 @@ class SavingDonateScreen extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () => Get.offAllNamed(RoutePath.process, arguments: {
-                'display': 'ผู้พิทักษ์โลก',
-                'token': null,
-              }),
+              onTap: () {
+                Get.find<SmartBinApi>().playSound(command: 'list.donate');
+                Get.offAllNamed(RoutePath.process, arguments: {
+                  'display': 'ผู้พิทักษ์โลก',
+                  'token': null,
+                });
+              },
               child: Column(
                 children: [
                   Material(
@@ -95,9 +102,11 @@ class SavingDonateScreen extends StatelessWidget {
         ),
         const SizedBox(height: 25),
         InkWell(
-          onTap: () => Get.back(),
-          child:
-              Image.asset('assets/images/buttons/howto-back.png', height: 45),
+          onTap: () {
+            Get.find<SmartBinApi>().playSound(command: 'all.back');
+            Get.back();
+          },
+          child: Image.asset('assets/images/buttons/howto-back.png', height: 45),
         ),
       ],
     ));

@@ -8,3 +8,6 @@
 
 const double SCREEN_WIDTH = 585.2;
 const double SCREEN_HEIGHT = 351.12;
+
+const String TYPE_TEST = 'yes';   // for dev
+// const String TYPE_TEST = 'no'; // for production

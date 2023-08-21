@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/apis/smartbin_api.dart';
 import 'package:smartbin_ui_flutter/controllers/scan_qrcode_controller.dart';
 import 'package:smartbin_ui_flutter/widgets/background.dart';
 
@@ -44,9 +45,11 @@ class ScanQRCodeScreen extends GetView<ScanQRCodeController> {
             )),
         const SizedBox(height: 35),
         InkWell(
-          onTap: () => Get.back(),
-          child:
-              Image.asset('assets/images/buttons/howto-back.png', height: 45),
+          onTap: () {
+            Get.find<SmartBinApi>().playSound(command: 'all.back');
+            Get.back();
+          },
+          child: Image.asset('assets/images/buttons/howto-back.png', height: 45),
         ),
       ],
     ));

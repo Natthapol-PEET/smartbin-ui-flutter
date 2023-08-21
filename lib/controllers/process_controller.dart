@@ -50,6 +50,9 @@ class ProcessController extends BaseController {
   void onInit() {
     super.onInit();
 
+    lightManagement(status: true);
+    Timer(const Duration(seconds: 2), () => Get.find<SmartBinApi>().playSound(command: 'all.ready'));
+
     try {
       display = arg['display'];
       accessModel = arg['token'];
@@ -70,6 +73,18 @@ class ProcessController extends BaseController {
         countdownTimer?.cancel();
       }
     });
+  }
+
+  Future<void> lightManagement({required bool status}) async {
+    try {
+      Response resp = await api.lightManagement(status ? 'on' : 'off');
+
+      if (!resp.isOk) {
+        SmartBinDialog.showWarning(desc: 'ไม่สามารถเปิดไฟถังขยะได้', onOk: () {});
+      }
+    } catch (e) {
+      SmartBinDialog.showWarning(desc: 'ไม่สามารถเปิดไฟถังขยะได้', onOk: () {});
+    }
   }
 
   Future<void> getDataType() async {
@@ -161,28 +176,41 @@ class ProcessController extends BaseController {
 
     userSelectTypeProcess();
     await prediction();
+    Get.find<SmartBinApi>().playSound(command: 'all.ready');
   }
 
   Future<void> prediction() async {
-    String endpoint = 'prediction_donate';
+    bool isDonate = false;
 
-    if (accessModel?.accessToken != null) {
-      endpoint = 'prediction_login';
+    if (accessModel?.accessToken == null) {
+      isDonate = true;
     }
 
     try {
-      Response resp = await api.prediction(endpoint, <String, String>{
-        "image_path": "assets/images/plastic.jpg",
-        "access_token": accessModel?.accessToken ?? "",
-      });
+      Response resp = await api.prediction(
+        <String, String>{
+          "access_token": accessModel?.accessToken ?? "",
+        },
+        isDonate: isDonate,
+      );
 
       if (resp.isOk) {
-        PredictType data = PredictType.fromJson(resp.body);
-        countTypeById(data.id as int);
+        PredictType model = PredictType.fromJson(resp.body);
+        await countTypeById(model.data?.id as int);
+
+        if ((model.binDetails?.can as int) > 95 ||
+            (model.binDetails?.pet as int) > 95 ||
+            (model.binDetails?.plastic as int) > 95 ||
+            (model.binDetails?.unknown as int) > 95) {
+          SmartBinDialog.showWarning(
+            desc: 'ถังขยะเต็มแล้ว กรุณาใช้งานใหม่ภายหลัง',
+            onOk: () => Get.offAllNamed(RoutePath.fullBin),
+          );
+        }
       } else {
         SmartBinDialog.showWarning(
           desc: 'ระบบมีปัญหา กรุณาลองใหม่ภายหลัง',
-          onOk: () => Get.offAllNamed(RoutePath.home),
+          onOk: () => Get.offAllNamed(RoutePath.fullBin),
         );
       }
     } catch (e) {
@@ -193,7 +221,7 @@ class ProcessController extends BaseController {
     }
   }
 
-  void countTypeById(int id) {
+  Future<void> countTypeById(int id) async {
     String type = '';
 
     dataTypeModel.data?.forEach((elem) {

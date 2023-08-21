@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
+import 'package:smartbin_ui_flutter/apis/smartbin_api.dart';
 
 class TotalPointController extends GetxController {
   String studentId = '';
@@ -13,6 +16,8 @@ class TotalPointController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
+    Timer(const Duration(seconds: 2), () => Get.find<SmartBinApi>().playSound(command: 'all.total'));
 
     try {
       studentId = args['display'];
