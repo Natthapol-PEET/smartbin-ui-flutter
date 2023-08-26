@@ -52,10 +52,7 @@ class HomeScreen extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                onTap: () {
-                  Get.find<SmartBinApi>().playSound(command: 'main.exchange');
-                  Get.toNamed(RoutePath.savingDonate);
-                },
+                onTap: controller.goToExchange,
                 child: Image.asset('assets/images/buttons/exchange.png', height: 50),
               ),
               const SizedBox(width: 50),

@@ -292,6 +292,8 @@ class ProcessController extends BaseController {
       }
     });
 
+    lightManagement(status: false);
+
     Get.offAllNamed(RoutePath.totalPoint, arguments: <String, dynamic>{
       'display': display,
       'point': total,
