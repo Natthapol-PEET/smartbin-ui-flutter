@@ -58,6 +58,16 @@ task_buildWeb(){
   fvm flutter build web --release
 }
 
+help__dockerRun="docker-compose up -d"
+task_dockerRun(){
+  sudo docker-compose up -d
+}
+
+help__dockerDown="docker-compose down -d"
+task_dockerDown(){
+  sudo docker-compose down -d
+}
+
 ## main
 list_all_helps() {
   compgen -v | egrep "^help__.*"

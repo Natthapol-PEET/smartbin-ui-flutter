@@ -226,6 +226,8 @@ class ProcessController extends BaseController {
         onOk: () => Get.offAllNamed(RoutePath.home),
       );
     }
+
+    isReady(true);
   }
 
   Future<void> countTypeById(int id) async {
@@ -257,7 +259,6 @@ class ProcessController extends BaseController {
     }
 
     selectType = ''.obs;
-    isReady(true);
   }
 
   Future<void> userSelectType({required String type}) async {
