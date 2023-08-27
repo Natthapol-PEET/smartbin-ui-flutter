@@ -51,7 +51,8 @@ class ProcessController extends BaseController {
     super.onInit();
 
     lightManagement(status: true);
-    Timer(const Duration(seconds: 2), () => Get.find<SmartBinApi>().playSound(command: 'all.ready'));
+    Timer(const Duration(seconds: 2),
+        () => Get.find<SmartBinApi>().playSound(command: 'all.ready'));
 
     try {
       display = arg['display'];
@@ -80,7 +81,8 @@ class ProcessController extends BaseController {
       Response resp = await api.lightManagement(status ? 'on' : 'off');
 
       if (!resp.isOk) {
-        SmartBinDialog.showWarning(desc: 'ไม่สามารถเปิดไฟถังขยะได้', onOk: () {});
+        SmartBinDialog.showWarning(
+            desc: 'ไม่สามารถเปิดไฟถังขยะได้', onOk: () {});
       }
     } catch (e) {
       SmartBinDialog.showWarning(desc: 'ไม่สามารถเปิดไฟถังขยะได้', onOk: () {});
@@ -198,15 +200,20 @@ class ProcessController extends BaseController {
         PredictType model = PredictType.fromJson(resp.body);
         await countTypeById(model.data?.id as int);
 
-        if ((model.binDetails?.can as int) > 95 ||
-            (model.binDetails?.pet as int) > 95 ||
-            (model.binDetails?.plastic as int) > 95 ||
-            (model.binDetails?.unknown as int) > 95) {
+        if ((model.binDetails?.can as int) == 100 ||
+            (model.binDetails?.pet as int) == 100 ||
+            (model.binDetails?.plastic as int) == 100 ||
+            (model.binDetails?.unknown as int) == 100) {
           SmartBinDialog.showWarning(
             desc: 'ถังขยะเต็มแล้ว กรุณาใช้งานใหม่ภายหลัง',
             onOk: () => Get.offAllNamed(RoutePath.fullBin),
           );
         }
+      } else if (resp.statusCode == 502) {
+        SmartBinDialog.showWarning(
+          desc: 'คุณไม่ได้ทำรายการในเวลาที่กำหนด กรุณาทำรายการใหม่อีกครั้ง',
+          onOk: () {},
+        );
       } else {
         SmartBinDialog.showWarning(
           desc: 'ระบบมีปัญหา กรุณาลองใหม่ภายหลัง',
