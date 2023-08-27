@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+    frontend:
+        build: .
+        image: smartbin-ui
+        ports:
+            - 80:80

@@ -28,19 +28,23 @@ class HomeController extends BaseController {
         pet.value = model.data?.pet as double;
         plastic.value = model.data?.plastic as double;
       } else {
-        SmartBinDialog.showWarning(desc: 'ไม่สามารถดึงข้อมูลความจุขยะปัจจุบันได้', onOk: () {});
+        SmartBinDialog.showWarning(
+            desc: 'ไม่สามารถดึงข้อมูลความจุขยะปัจจุบันได้', onOk: () {});
       }
     } catch (e) {
-      SmartBinDialog.showWarning(desc: 'ไม่สามารถดึงข้อมูลความจุขยะปัจจุบันได้', onOk: () {});
+      SmartBinDialog.showWarning(
+          desc: 'ไม่สามารถดึงข้อมูลความจุขยะปัจจุบันได้', onOk: () {});
     }
   }
 
   goToExchange() {
-    if (can.value == 100 || pet.value == 100 || plastic.value == 100) {
-      SmartBinDialog.showWarning(desc: 'ถังขยะเต็ม กรุณาทำรายการในภายหลัง', onOk: () {});
-    } else {
-      Get.find<SmartBinApi>().playSound(command: 'main.exchange');
-      Get.toNamed(RoutePath.savingDonate);
-    }
+    // if (can.value == 100 || pet.value == 100 || plastic.value == 100) {
+    //   SmartBinDialog.showWarning(
+    //       desc: 'ถังขยะเต็ม กรุณาทำรายการในภายหลัง', onOk: () {});
+    //   return;
+    // }
+
+    Get.find<SmartBinApi>().playSound(command: 'main.exchange');
+    Get.toNamed(RoutePath.savingDonate);
   }
 }
