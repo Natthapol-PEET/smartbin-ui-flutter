@@ -65,7 +65,7 @@ task_dockerRun(){
 
 help__dockerDown="docker-compose down -d"
 task_dockerDown(){
-  sudo docker-compose down -d
+  sudo docker-compose down
 }
 
 ## main
